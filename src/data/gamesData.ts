@@ -2,7 +2,8 @@ export interface GameItem {
   id: string;
   title: string;
   genre: string;
-  category: 'q4-2026' | '2027' | 'holiday' | 'instant-web';
+  year: number;
+  category: 'highlight-2025-2026' | '2027' | 'holiday' | 'instant-web';
   badge: string;
   badgeColor: string;
   releaseQuarter: string;
@@ -16,6 +17,7 @@ export interface GameItem {
   hasPlayableWeb: boolean;
   demoUrl?: string;
   tags: string[];
+  featured?: boolean;
 }
 
 export const GAMES_CATALOG: GameItem[] = [
@@ -23,27 +25,30 @@ export const GAMES_CATALOG: GameItem[] = [
     id: "happy-farm",
     title: "Happy Farm: Cozy Harvest",
     genre: "Casual Farm & Town Sim",
-    category: "q4-2026",
-    badge: "Q4 2026 Launch",
+    year: 2026,
+    category: "highlight-2025-2026",
+    badge: "2026 Highlight",
     badgeColor: "badge-success",
-    releaseQuarter: "November 2026",
+    releaseQuarter: "Q4 2026 (November)",
     engine: "Cocos Creator 3.8 (TypeScript)",
     platforms: ["iOS", "Android", "Web"],
     description: "Relaxing autumn farm simulator with crop harvest timers, bakery crafting, animal affection, and neighbor delivery helicopter.",
     usp: "Offline-friendly farming with vibrant pastel aesthetics and instant web-to-mobile cross-save.",
     rating: 4.9,
     players: "2.4M Wishlists",
-    coverImage: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80",
+    coverImage: "/images/game_happy_farm.png",
     hasPlayableWeb: true,
     demoUrl: "/games/happy-farm/",
-    tags: ["Farming", "Cozy", "Offline", "Crafting"]
+    tags: ["Farming", "Cozy", "Offline", "Crafting"],
+    featured: true
   },
   {
     id: "halloween-match3d",
     title: "Halloween Night: Spooky Sweets 3D",
     genre: "3D Tile Match & ASMR Sorting",
+    year: 2026,
     category: "holiday",
-    badge: "🎃 Halloween Special",
+    badge: "🎃 Halloween 2026",
     badgeColor: "badge-warning",
     releaseQuarter: "October 2026 (Halloween)",
     engine: "Unity 6 LTS (C# URP)",
@@ -52,17 +57,19 @@ export const GAMES_CATALOG: GameItem[] = [
     usp: "Satisfying ASMR popping sounds with multi-layered tumbling 3D physics and festive Halloween maps.",
     rating: 4.8,
     players: "Special Event",
-    coverImage: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80",
+    coverImage: "/images/game_halloween_match.png",
     hasPlayableWeb: true,
     demoUrl: "/games/halloween-match/",
-    tags: ["Match-3D", "Halloween", "ASMR", "Physics"]
+    tags: ["Match-3D", "Halloween", "ASMR", "Physics"],
+    featured: true
   },
   {
     id: "christmas-santa-merge",
     title: "Christmas Wonder: Santa's Gift Merge",
     genre: "Merge-2 & Cozy Holiday Renovation",
+    year: 2026,
     category: "holiday",
-    badge: "🎄 Christmas Special",
+    badge: "🎄 Christmas 2026",
     badgeColor: "badge-error",
     releaseQuarter: "December 2026 (XMas)",
     engine: "Cocos Creator 3.8 (TypeScript)",
@@ -71,17 +78,19 @@ export const GAMES_CATALOG: GameItem[] = [
     usp: "8x8 festive spawner board, heartwarming holiday storylines, and seasonal advent calendar daily rewards.",
     rating: 4.9,
     players: "Holiday Event",
-    coverImage: "https://images.unsplash.com/photo-1512389142860-9c449e58a543?auto=format&fit=crop&w=800&q=80",
+    coverImage: "/images/game_santa_merge.png",
     hasPlayableWeb: true,
     demoUrl: "/games/christmas-merge/",
-    tags: ["Merge-2", "Christmas", "Renovation", "Stories"]
+    tags: ["Merge-2", "Christmas", "Renovation", "Stories"],
+    featured: true
   },
   {
     id: "fashion-mie",
     title: "FashionMie: Winter Runway Stylist",
     genre: "Casual Fashion & Teen Dress-Up",
-    category: "q4-2026",
-    badge: "Winter Runway",
+    year: 2026,
+    category: "highlight-2025-2026",
+    badge: "Winter 2026",
     badgeColor: "badge-secondary",
     releaseQuarter: "December 2026",
     engine: "Cocos Creator 3.8 (TypeScript)",
@@ -93,16 +102,18 @@ export const GAMES_CATALOG: GameItem[] = [
     coverImage: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80",
     hasPlayableWeb: true,
     demoUrl: "/games/fashion-mie/",
-    tags: ["Fashion", "Dress-up", "ASMR Makeup", "Runway"]
+    tags: ["Fashion", "Dress-up", "ASMR Makeup", "Runway"],
+    featured: true
   },
   {
     id: "alien-blasted",
     title: "Alien Blasted: Cyber Arcade",
     genre: "Instant Web Arcade & Action Shooter",
+    year: 2025,
     category: "instant-web",
-    badge: "⚡ Instant Web Play",
+    badge: "⚡ 2025 Web Hit",
     badgeColor: "badge-accent",
-    releaseQuarter: "Playable Now",
+    releaseQuarter: "Available Now",
     engine: "React 19 + Pixi.js 8 (Vite)",
     platforms: ["Web Browser", "Mobile Web", "Playable Ads"],
     description: "High-velocity 60 FPS multi-lane street shooter with roguelite 3-card upgrades, vibrant comic visuals, and instant browser playable URLs.",
@@ -112,12 +123,14 @@ export const GAMES_CATALOG: GameItem[] = [
     coverImage: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80",
     hasPlayableWeb: true,
     demoUrl: "/games/alien-blasted/",
-    tags: ["Action", "Web Instant", "Roguelite", "Pixi.js"]
+    tags: ["Action", "Web Instant", "Roguelite", "Pixi.js"],
+    featured: true
   },
   {
     id: "magic-merge-dragon",
     title: "Magic Merge: Dragon Sanctuary",
     genre: "Merge-2 & Dragon Breeding RPG",
+    year: 2027,
     category: "2027",
     badge: "2027 Flagship",
     badgeColor: "badge-primary",
@@ -130,12 +143,14 @@ export const GAMES_CATALOG: GameItem[] = [
     players: "Anticipated 2027",
     coverImage: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=800&q=80",
     hasPlayableWeb: false,
-    tags: ["Dragons", "Merge-2", "Magic", "Sanctuary"]
+    tags: ["Dragons", "Merge-2", "Magic", "Sanctuary"],
+    featured: false
   },
   {
     id: "triple-match-joy",
     title: "Triple Match Joy: Goods Master 3D",
     genre: "3D Tile Match & ASMR Sorting",
+    year: 2027,
     category: "2027",
     badge: "2027 Upcoming",
     badgeColor: "badge-info",
@@ -148,12 +163,14 @@ export const GAMES_CATALOG: GameItem[] = [
     players: "3D ASMR",
     coverImage: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80",
     hasPlayableWeb: false,
-    tags: ["3D Match", "Goods Sort", "ASMR", "Relaxing"]
+    tags: ["3D Match", "Goods Sort", "ASMR", "Relaxing"],
+    featured: false
   },
   {
     id: "kawaii-mart",
     title: "Kawaii Mart: Animal Supermarket",
     genre: "Cozy Idle Arcade & Tycoon",
+    year: 2027,
     category: "2027",
     badge: "2027 Upcoming",
     badgeColor: "badge-success",
@@ -167,12 +184,14 @@ export const GAMES_CATALOG: GameItem[] = [
     coverImage: "https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?auto=format&fit=crop&w=800&q=80",
     hasPlayableWeb: true,
     demoUrl: "/games/kawaii-mart/",
-    tags: ["Tycoon", "Cute Animals", "Idle Arcade", "Simulation"]
+    tags: ["Tycoon", "Cute Animals", "Idle Arcade", "Simulation"],
+    featured: false
   },
   {
     id: "melody-paws",
     title: "Melody Paws: Kawaii Beat Arcade",
     genre: "Cozy Music & Rhythm Tap",
+    year: 2027,
     category: "2027",
     badge: "2027 Upcoming",
     badgeColor: "badge-secondary",
@@ -186,12 +205,14 @@ export const GAMES_CATALOG: GameItem[] = [
     coverImage: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=800&q=80",
     hasPlayableWeb: true,
     demoUrl: "/games/melody-paws/",
-    tags: ["Music", "Rhythm", "Cats", "Lo-Fi"]
+    tags: ["Music", "Rhythm", "Cats", "Lo-Fi"],
+    featured: false
   },
   {
     id: "cooking-hero",
     title: "Cooking Hero: Gourmet World Tour",
     genre: "Time-Management Cooking Sim",
+    year: 2027,
     category: "2027",
     badge: "2027 Upcoming",
     badgeColor: "badge-warning",
@@ -204,12 +225,14 @@ export const GAMES_CATALOG: GameItem[] = [
     players: "Chef Rush",
     coverImage: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=800&q=80",
     hasPlayableWeb: false,
-    tags: ["Cooking", "Time-Management", "Restaurant", "Fast"]
+    tags: ["Cooking", "Time-Management", "Restaurant", "Fast"],
+    featured: false
   },
   {
     id: "nut-and-bolt",
     title: "Nut & Bolt: Cute Rescue Puzzle",
     genre: "Logic Physics & Screw Puzzle",
+    year: 2027,
     category: "2027",
     badge: "2027 Upcoming",
     badgeColor: "badge-accent",
@@ -222,12 +245,14 @@ export const GAMES_CATALOG: GameItem[] = [
     players: "Physics Puzzle",
     coverImage: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80",
     hasPlayableWeb: false,
-    tags: ["Puzzle", "Logic", "Physics", "Rescue"]
+    tags: ["Puzzle", "Logic", "Physics", "Rescue"],
+    featured: false
   },
   {
     id: "happy-city",
     title: "Happy City: Dream Metropolis",
     genre: "Isometric City Builder & Tycoon",
+    year: 2027,
     category: "2027",
     badge: "2027 Grand Finale",
     badgeColor: "badge-primary",
@@ -240,6 +265,7 @@ export const GAMES_CATALOG: GameItem[] = [
     players: "City Builder",
     coverImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
     hasPlayableWeb: false,
-    tags: ["City Builder", "Tycoon", "Sandbox", "Multiplayer"]
+    tags: ["City Builder", "Tycoon", "Sandbox", "Multiplayer"],
+    featured: false
   }
 ];
