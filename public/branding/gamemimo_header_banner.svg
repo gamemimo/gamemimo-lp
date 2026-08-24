@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#70A6FF" />
+      <stop offset="40%" stop-color="#91C4FF" />
+      <stop offset="75%" stop-color="#FFE3E3" />
+      <stop offset="100%" stop-color="#FFF5EB" />
+    </linearGradient>
+    <linearGradient id="cloudGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.6" />
+    </linearGradient>
+    <linearGradient id="islandGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7ED957" />
+      <stop offset="40%" stop-color="#54B948" />
+      <stop offset="41%" stop-color="#C29668" />
+      <stop offset="100%" stop-color="#8C5E3C" />
+    </linearGradient>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF4B72" />
+      <stop offset="50%" stop-color="#FF8A3D" />
+      <stop offset="100%" stop-color="#FFC107" />
+    </linearGradient>
+    <filter id="bannerShadow">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.15" />
+    </filter>
+  </defs>
+
+  <!-- Sky Background -->
+  <rect width="1920" height="600" fill="url(#skyGrad)" />
+
+  <!-- Background Clouds -->
+  <g fill="url(#cloudGrad)">
+    <path d="M 100 250 Q 150 200 220 230 Q 280 180 360 210 Q 420 190 480 250 Z" />
+    <path d="M 800 180 Q 860 120 940 150 Q 1020 100 1120 140 Q 1200 110 1280 180 Z" opacity="0.8" />
+    <path d="M 1500 220 Q 1560 160 1640 190 Q 1720 140 1820 180 Q 1880 150 1920 220 Z" opacity="0.9" />
+  </g>
+
+  <!-- Floating Islands -->
+  <!-- Left Island (Farm & Trees) -->
+  <g transform="translate(150, 320)" filter="url(#bannerShadow)">
+    <path d="M 0 50 Q 120 20 240 50 Q 280 70 240 160 Q 120 200 0 160 Q -40 100 0 50 Z" fill="url(#islandGrad)" />
+    <!-- Mini Windmill -->
+    <rect x="100" y="-10" width="24" height="45" fill="#FFF" stroke="#C29668" stroke-width="2" />
+    <polygon points="112,-30 95,-10 129,-10" fill="#FF5E7E" />
+    <!-- Little Cozy House -->
+    <rect x="140" y="5" width="40" height="30" fill="#FFF3CD" />
+    <polygon points="160,-15 135,5 185,5" fill="#FF8A3D" />
+  </g>
+
+  <!-- Right Island (Cozy Sanctuary) -->
+  <g transform="translate(1500, 300)" filter="url(#bannerShadow)">
+    <path d="M 0 60 Q 140 20 280 60 Q 320 80 260 180 Q 140 220 20 180 Q -30 110 0 60 Z" fill="url(#islandGrad)" />
+    <!-- Magic Gem Crystal -->
+    <polygon points="140,0 165,30 140,60 115,30" fill="#00F2FE" opacity="0.9" />
+  </g>
+
+  <!-- Cute Airplane in Sky -->
+  <g transform="translate(620, 140) rotate(-5)">
+    <ellipse cx="0" cy="0" rx="40" ry="16" fill="#FF5E7E" />
+    <polygon points="0,-16 -15,-40 5,-16" fill="#FFFFFF" />
+    <polygon points="-25,0 -45,-15 -45,0" fill="#FFFFFF" />
+    <circle cx="25" cy="0" r="10" fill="#4FACFE" opacity="0.8" />
+    <!-- Smoke trail -->
+    <circle cx="-55" cy="0" r="6" fill="#FFF" opacity="0.6" />
+    <circle cx="-75" cy="-2" r="9" fill="#FFF" opacity="0.4" />
+    <circle cx="-100" cy="-5" r="12" fill="#FFF" opacity="0.2" />
+  </g>
+
+  <!-- Central Hero Brand Typography -->
+  <g transform="translate(960, 260)" text-anchor="middle">
+    <!-- Big Title -->
+    <text x="0" y="0" font-family="'Fredoka', 'Quicksand', 'Nunito', 'Segoe UI', sans-serif" font-weight="900" font-size="96" fill="url(#titleGrad)" filter="url(#bannerShadow)" letter-spacing="2">
+      GameMimo
+    </text>
+    <!-- Subtitle -->
+    <text x="0" y="55" font-family="'Nunito', 'Segoe UI', sans-serif" font-weight="800" font-size="28" fill="#2C3E50" letter-spacing="4">
+      DELIGHTFUL CASUAL GAMES &bull; COZY WORLDS &bull; PLAY ANYWHERE
+    </text>
+    <!-- Division of SGGame badge -->
+    <rect x="-160" y="80" width="320" height="38" rx="19" fill="#FFFFFF" filter="url(#bannerShadow)" />
+    <text x="0" y="105" font-family="'Nunito', sans-serif" font-weight="800" font-size="15" fill="#4A5568" letter-spacing="2">
+      A DIVISION OF SGGAME GROUP
+    </text>
+  </g>
+
+  <!-- Floating Gems & Sparkles -->
+  <g transform="translate(800, 100)">
+    <polygon points="0,-15 12,0 0,15 -12,0" fill="#FFD166" />
+  </g>
+  <g transform="translate(1120, 120)">
+    <polygon points="0,-20 16,0 0,20 -16,0" fill="#06D6A0" />
+  </g>
+  <g transform="translate(450, 180)">
+    <polygon points="0,-12 10,0 0,12 -10,0" fill="#FF5E7E" />
+  </g>
+</svg>
