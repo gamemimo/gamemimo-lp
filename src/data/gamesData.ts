@@ -1,3 +1,18 @@
+export interface GameCharacter {
+  name: string;
+  role: string;
+  portrait: string;
+  personality: string;
+  signatureAbility: string;
+  activityQuote: string;
+}
+
+export interface GameActivity {
+  title: string;
+  description: string;
+  image: string;
+}
+
 export interface GameItem {
   id: string;
   title: string;
@@ -16,8 +31,12 @@ export interface GameItem {
   coverImage: string;
   hasPlayableWeb: boolean;
   demoUrl?: string;
+  appStoreUrl?: string;
+  googlePlayUrl?: string;
   tags: string[];
   featured?: boolean;
+  characters?: GameCharacter[];
+  activities?: GameActivity[];
 }
 
 export const GAMES_CATALOG: GameItem[] = [
@@ -32,15 +51,47 @@ export const GAMES_CATALOG: GameItem[] = [
     releaseQuarter: "Q4 2026 (November)",
     engine: "Cocos Creator 3.8 (TypeScript)",
     platforms: ["iOS", "Android", "Web"],
-    description: "Relaxing autumn farm simulator featuring crop harvest loops, rustic bakery crafting, fluffy animal pens, and helicopter trading.",
+    description: "Relaxing autumn farm simulator featuring crop harvest loops, rustic bakery crafting, fluffy animal pens, and neighbor trading helicopter.",
     usp: "Offline-friendly farming with Disney-like pastel aesthetics and instant web-to-mobile cross-save.",
     rating: 4.9,
     players: "2.4M Wishlists",
     coverImage: "/images/game_happy_farm.png",
     hasPlayableWeb: true,
     demoUrl: "/games/happy-farm/",
+    appStoreUrl: "https://apps.apple.com/app/happy-farm-cozy-harvest/id6400000001",
+    googlePlayUrl: "https://play.google.com/store/apps/details?id=com.gamemimo.happyfarm",
     tags: ["Farming", "Cozy", "Offline", "Crafting"],
-    featured: true
+    featured: true,
+    characters: [
+      {
+        name: "Barnaby the Farmer",
+        role: "Head Harvester & Orchard Keeper",
+        portrait: "/images/character_mimo_cat.png",
+        personality: "Cheerful, hardworking, loves pumpkin pie and morning sunshine.",
+        signatureAbility: "Golden Harvest Boost (2x crop speed)",
+        activityQuote: "Fresh morning dew on golden wheat! Time to fire up the bakery ovens!"
+      },
+      {
+        name: "Pip the Fluffy Lamb",
+        role: "Pasture Mascot & Wool Producer",
+        portrait: "/images/character_baby_dragon.png",
+        personality: "Playful, gentle, follows the tractor everywhere.",
+        signatureAbility: "Rainbow Fleece (Bonus crafting materials)",
+        activityQuote: "Baa! The clover patch is ready for snacking!"
+      }
+    ],
+    activities: [
+      {
+        title: "Golden Wheat & Pumpkin Harvesting",
+        description: "Plant seasonal autumn crops, harvest ripe pumpkins with a single tap, and store wheat in the wooden barn.",
+        image: "/images/game_happy_farm.png"
+      },
+      {
+        title: "Rustic Bakery Bread & Pie Baking",
+        description: "Combine fresh wheat and milk to bake golden croissants and warm pumpkin pies for village deliveries.",
+        image: "/images/game_happy_farm.png"
+      }
+    ]
   },
   {
     id: "halloween-match3d",
@@ -60,8 +111,27 @@ export const GAMES_CATALOG: GameItem[] = [
     coverImage: "/images/game_halloween_match.png",
     hasPlayableWeb: true,
     demoUrl: "/games/halloween-match/",
+    appStoreUrl: "https://apps.apple.com/app/halloween-night-spooky-match3d/id6400000002",
+    googlePlayUrl: "https://play.google.com/store/apps/details?id=com.gamemimo.halloweenmatch3d",
     tags: ["Match-3D", "Halloween", "ASMR", "Physics"],
-    featured: true
+    featured: true,
+    characters: [
+      {
+        name: "Boo the Sweet Ghost",
+        role: "Shelf Guide & Match Cheerleader",
+        portrait: "/images/character_baby_dragon.png",
+        personality: "Cute, floaty, gives friendly spooky winks when you match 3 candies.",
+        signatureAbility: "Candy Magnet (Auto-sorts 3 identical sweets into tray)",
+        activityQuote: "Boo! Don't let the candy corn tumble off the wooden shelf!"
+      }
+    ],
+    activities: [
+      {
+        title: "3D Shelf Goods Sorting",
+        description: "Sort bubbling purple potions, smiling mini-pumpkins, and bat cookies into clean triple sets.",
+        image: "/images/game_halloween_match.png"
+      }
+    ]
   },
   {
     id: "christmas-santa-merge",
@@ -81,8 +151,27 @@ export const GAMES_CATALOG: GameItem[] = [
     coverImage: "/images/game_santa_merge.png",
     hasPlayableWeb: true,
     demoUrl: "/games/christmas-merge/",
+    appStoreUrl: "https://apps.apple.com/app/christmas-wonder-santa-merge/id6400000003",
+    googlePlayUrl: "https://play.google.com/store/apps/details?id=com.gamemimo.christmasmerge",
     tags: ["Merge-2", "Christmas", "Renovation", "Stories"],
-    featured: true
+    featured: true,
+    characters: [
+      {
+        name: "Jingle the Master Elf",
+        role: "Head Toy Craftsman",
+        portrait: "/images/character_mimo_cat.png",
+        personality: "Energetic, festive, wears a bell-tipped hat and loves peppermint cookies.",
+        signatureAbility: "Toy Box Surge (Spawns 5 mystery wrapped gift boxes)",
+        activityQuote: "Only 12 days till Christmas Eve! Let's polish these wooden toy trains!"
+      }
+    ],
+    activities: [
+      {
+        title: "North Pole Toy Workshop Merge",
+        description: "Merge gingerbread cookies, golden bells, and toy train carriages to restore Santa's cozy hearth.",
+        image: "/images/game_santa_merge.png"
+      }
+    ]
   },
   {
     id: "fashion-mie",
@@ -102,8 +191,35 @@ export const GAMES_CATALOG: GameItem[] = [
     coverImage: "/images/game_fashion_mie.png",
     hasPlayableWeb: true,
     demoUrl: "/games/fashion-mie/",
+    appStoreUrl: "https://apps.apple.com/app/fashionmie-winter-runway/id6400000004",
+    googlePlayUrl: "https://play.google.com/store/apps/details?id=com.gamemimo.fashionmie",
     tags: ["Fashion", "Dress-up", "ASMR Makeup", "Runway"],
-    featured: true
+    featured: true,
+    characters: [
+      {
+        name: "Mie Sato",
+        role: "Lead Fashion Protagonist & Stylist",
+        portrait: "/images/character_mimo_cat.png",
+        personality: "Creative, chic, trendsetting, loves elegant coats and pastel berets.",
+        signatureAbility: "Haute Couture Glow (Unlocks 5-star runway spotlight bonus)",
+        activityQuote: "The winter runway awaits! Let's find the perfect wool coat and glitter handbag!"
+      },
+      {
+        name: "Yuna Kim",
+        role: "Rival Designer & Runway Critic",
+        portrait: "/images/character_baby_dragon.png",
+        personality: "Perfectionist, sharp eye for color harmony and luxury accessories.",
+        signatureAbility: "Critique Boost (+15% VIP client tip bonus)",
+        activityQuote: "Chic lines and impeccable tailoring—that's how you win the winter grand prix."
+      }
+    ],
+    activities: [
+      {
+        title: "Parisian Salon Wardrobe Styling",
+        description: "Mix and match designer trench coats, berets, and luxury handbags before the full-length gilded mirror.",
+        image: "/images/game_fashion_mie.png"
+      }
+    ]
   },
   {
     id: "alien-blasted",
@@ -123,8 +239,35 @@ export const GAMES_CATALOG: GameItem[] = [
     coverImage: "/images/game_alien_blasted.png",
     hasPlayableWeb: true,
     demoUrl: "/games/alien-blasted/",
+    appStoreUrl: "https://apps.apple.com/app/alien-blasted-cyber-arcade/id6400000005",
+    googlePlayUrl: "https://play.google.com/store/apps/details?id=com.gamemimo.alienblasted",
     tags: ["Action", "Side-Scroller", "Multi-Lane", "Pixi.js"],
-    featured: true
+    featured: true,
+    characters: [
+      {
+        name: "Kael Voss",
+        role: "Precision Vanguard (Railburst Carbine)",
+        portrait: "/images/character_baby_dragon.png",
+        personality: "Route-obsessed pathfinder with dry humor and rock-solid discipline under swarm pressure.",
+        signatureAbility: "Overcharged Railburst (Pierces entire enemy street lane)",
+        activityQuote: "Keep moving through the Neon Causeway. I'll cover the rear lane!"
+      },
+      {
+        name: "Nyra Sol",
+        role: "Aggressive Swarm Breaker (Helix SMG & Vials)",
+        portrait: "/images/character_mimo_cat.png",
+        personality: "Charismatic, protective former street medic armed with stolen hybrid alien biotech.",
+        signatureAbility: "Biotech Grenade Burst (Clears dense swarms in radius)",
+        activityQuote: "They want the lower city? They'll have to get through my biotech SMG first!"
+      }
+    ],
+    activities: [
+      {
+        title: "Neon Causeway Multi-Lane Combat",
+        description: "Shift between foreground and background sidewalk lanes, jump over ruined taxis, and blast alien bugs.",
+        image: "/images/game_alien_blasted.png"
+      }
+    ]
   },
   {
     id: "magic-merge-dragon",
@@ -143,8 +286,27 @@ export const GAMES_CATALOG: GameItem[] = [
     players: "Anticipated 2027",
     coverImage: "/images/game_magic_merge.png",
     hasPlayableWeb: false,
+    appStoreUrl: "https://apps.apple.com/app/magic-merge-dragon-sanctuary/id6400000006",
+    googlePlayUrl: "https://play.google.com/store/apps/details?id=com.gamemimo.magicmergedragon",
     tags: ["Dragons", "Merge-2", "Magic", "Sanctuary"],
-    featured: false
+    featured: false,
+    characters: [
+      {
+        name: "Draco the Celestial Hatchling",
+        role: "Primary Companion & Island Guardian",
+        portrait: "/images/character_baby_dragon.png",
+        personality: "Playful, affectionate, loves shiny mana crystals and flying through pink sunset clouds.",
+        signatureAbility: "Starlight Breath (Blesses tiles with instant merge boosts)",
+        activityQuote: "Sparkle roar! The celestial sanctuary is glowing brighter today!"
+      }
+    ],
+    activities: [
+      {
+        title: "Celestial Egg Hatching & Merge",
+        description: "Merge glowing dragon eggs on floating sky islands to awaken newborn elemental companions.",
+        image: "/images/game_magic_merge.png"
+      }
+    ]
   },
   {
     id: "triple-match-joy",
@@ -163,8 +325,17 @@ export const GAMES_CATALOG: GameItem[] = [
     players: "3D ASMR",
     coverImage: "/images/game_triple_match_joy.png",
     hasPlayableWeb: false,
+    appStoreUrl: "https://apps.apple.com/app/triple-match-joy-goods-master/id6400000007",
+    googlePlayUrl: "https://play.google.com/store/apps/details?id=com.gamemimo.triplematchjoy",
     tags: ["3D Match", "Goods Sort", "ASMR", "Relaxing"],
-    featured: false
+    featured: false,
+    activities: [
+      {
+        title: "Boba & Sweet Shop 3D Organizing",
+        description: "Match triple boba milk teas, rainbow sodas, and strawberry cakes to trigger celebratory fireworks.",
+        image: "/images/game_triple_match_joy.png"
+      }
+    ]
   },
   {
     id: "kawaii-mart",
@@ -184,6 +355,8 @@ export const GAMES_CATALOG: GameItem[] = [
     coverImage: "/images/game_kawaii_mart.png",
     hasPlayableWeb: true,
     demoUrl: "/games/kawaii-mart/",
+    appStoreUrl: "https://apps.apple.com/app/kawaii-mart-supermarket/id6400000008",
+    googlePlayUrl: "https://play.google.com/store/apps/details?id=com.gamemimo.kawaiimart",
     tags: ["Tycoon", "Cute Animals", "Idle Arcade", "Simulation"],
     featured: false
   },
@@ -205,6 +378,8 @@ export const GAMES_CATALOG: GameItem[] = [
     coverImage: "/images/game_melody_paws.png",
     hasPlayableWeb: true,
     demoUrl: "/games/melody-paws/",
+    appStoreUrl: "https://apps.apple.com/app/melody-paws-kawaii-beat/id6400000009",
+    googlePlayUrl: "https://play.google.com/store/apps/details?id=com.gamemimo.melodypaws",
     tags: ["Music", "Rhythm", "Cats", "Lo-Fi"],
     featured: false
   },
@@ -225,6 +400,8 @@ export const GAMES_CATALOG: GameItem[] = [
     players: "Chef Rush",
     coverImage: "/images/game_cooking_hero.png",
     hasPlayableWeb: false,
+    appStoreUrl: "https://apps.apple.com/app/cooking-hero-world-tour/id6400000010",
+    googlePlayUrl: "https://play.google.com/store/apps/details?id=com.gamemimo.cookinghero",
     tags: ["Cooking", "Time-Management", "Restaurant", "Fast"],
     featured: false
   },
@@ -245,6 +422,8 @@ export const GAMES_CATALOG: GameItem[] = [
     players: "Physics Puzzle",
     coverImage: "/images/game_nut_and_bolt.png",
     hasPlayableWeb: false,
+    appStoreUrl: "https://apps.apple.com/app/nut-bolt-cute-rescue/id6400000011",
+    googlePlayUrl: "https://play.google.com/store/apps/details?id=com.gamemimo.nutandbolt",
     tags: ["Puzzle", "Logic", "Physics", "Rescue"],
     featured: false
   },
@@ -265,6 +444,8 @@ export const GAMES_CATALOG: GameItem[] = [
     players: "City Builder",
     coverImage: "/images/game_happy_city.png",
     hasPlayableWeb: false,
+    appStoreUrl: "https://apps.apple.com/app/happy-city-dream-metropolis/id6400000012",
+    googlePlayUrl: "https://play.google.com/store/apps/details?id=com.gamemimo.happycity",
     tags: ["City Builder", "Tycoon", "Sandbox", "Multiplayer"],
     featured: false
   }
