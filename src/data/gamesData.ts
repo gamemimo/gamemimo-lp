@@ -446,8 +446,8 @@ export const GAMES_CATALOG: GameItem[] = [
     releaseQuarter: "Q3 2027",
     engine: "Cocos Creator 3.8 (TypeScript)",
     platforms: ["iOS", "Android", "Web"],
-    description: "Cook international delicacies across Tokyo sushi bars, Parisian patisseries, and New York food trucks under time-management pressure.",
-    usp: "Fast-paced tap-and-serve combos with kitchen gadget upgrades and cute animal diners.",
+    description: "Cook international delicacies across Tokyo sushi bars, Parisian patisseries, and New York food trucks with Chef Leo and his sous-chef kitten Basil under time-management excitement.",
+    usp: "Fast-paced tap-and-serve combos with kitchen gadget upgrades, customer patience management, and cute animal diners.",
     rating: 4.8,
     players: "Chef Rush",
     coverImage: "/images/game_cooking_hero.png",
@@ -458,18 +458,26 @@ export const GAMES_CATALOG: GameItem[] = [
     featured: false,
     characters: [
       {
-        name: "Chef Bruno",
-        role: "Executive Pastry & Grill Chef",
+        name: "Chef Leo (Human)",
+        role: "Executive Master Chef & Patissier",
+        portrait: "/images/character_mimo_cat.png",
+        personality: "Enthusiastic French-Italian culinary prodigy with a curly mustache, tall white toque, and red neckerchief.",
+        signatureAbility: "Frenzy Sizzle (Instantly completes all active stove orders)",
+        activityQuote: "Bon Appétit! Three gourmet burgers and hot ramen on the pass!"
+      },
+      {
+        name: "Basil the Kitten (Pet)",
+        role: "Sous-Chef & Ingredient Inspector",
         portrait: "/images/character_baby_dragon.png",
-        personality: "Passionate culinarian who treats every burger and ramen bowl like a work of art.",
-        signatureAbility: "Frenzy Grill (Instantly cooks all dishes on the stove)",
-        activityQuote: "Order up! Three gourmet double burgers with golden cheddar!"
+        personality: "Curious white calico kitten wearing a mini chef bandana who rings the service bell.",
+        signatureAbility: "Golden Garnish (+25% bonus coin tip on served orders)",
+        activityQuote: "Meow! The sushi rice is seasoned to perfection, Chef!"
       }
     ],
     activities: [
       {
-        title: "High-Speed Kitchen Rush",
-        description: "Sizzle patties, roll sushi, and serve hungry animal guests before their patience timers run out.",
+        title: "High-Speed Sizzling Kitchen Rush",
+        description: "Flip gourmet beef patties, roll fresh salmon nigiri, and simmer tonkotsu ramen while managing customer patience timers.",
         image: "/images/game_cooking_hero.png"
       }
     ]
@@ -485,8 +493,8 @@ export const GAMES_CATALOG: GameItem[] = [
     releaseQuarter: "Q3 2027",
     engine: "Unity 6 LTS (C# URP)",
     platforms: ["iOS", "Android"],
-    description: "Unscrew wooden planks and metal bars in correct sequence to release trapped cute pets and restore animal shelters.",
-    usp: "Brain-teasing spatial physics puzzles paired with rewarding animal rescue meta-progression.",
+    description: "Unscrew layered wooden planks and colored metal bolts in correct sequence to release trapped cute puppies and kittens and restore animal rescue sanctuaries.",
+    usp: "Brain-teasing spatial physics puzzles paired with rewarding animal rescue meta-progression and realistic wooden tactile sounds.",
     rating: 4.7,
     players: "Physics Puzzle",
     coverImage: "/images/game_nut_and_bolt.png",
@@ -497,18 +505,26 @@ export const GAMES_CATALOG: GameItem[] = [
     featured: false,
     characters: [
       {
-        name: "Rusty the Rescue Bot",
-        role: "Mechanical Tool Specialist",
+        name: "Emma the Inventor (Human)",
+        role: "Master Engineer & Animal Rescuer",
         portrait: "/images/character_baby_dragon.png",
-        personality: "Clever, precise, carries magnetic screwdrivers and loves solving knotty spatial puzzles.",
-        signatureAbility: "Magnetic Wrench (Unscrews any stubborn bolt immediately)",
-        activityQuote: "Check the gravity angle! Unscrew the blue bolt first!"
+        personality: "Clever, energetic teenage mechanic in denim overalls, toolbelt, and yellow safety goggles on her forehead.",
+        signatureAbility: "Magnetic Wrench (Instantly unscrews any stuck or locked bolt)",
+        activityQuote: "Hold on little buddy! Check the gravity angle and unscrew the blue bolt first!"
+      },
+      {
+        name: "Milo the Golden Pup (Pet)",
+        role: "Rescue Sanctuary Mascot",
+        portrait: "/images/character_mimo_cat.png",
+        personality: "Fluffy, wide-eyed golden retriever puppy who gives joyful tail wags when freed from puzzle cages.",
+        signatureAbility: "Joyful Bark (Reveals the next optimal unscrewing move)",
+        activityQuote: "Woof! Thank you Emma! Let's go help the kittens next!"
       }
     ],
     activities: [
       {
         title: "Tactile Wood & Metal Screw Puzzles",
-        description: "Carefully unscrew layered wooden bars in sequence to rescue cute kittens and puppies.",
+        description: "Carefully remove threaded metallic screws in sequential order so wooden planks drop under gravity, opening cages for trapped pets.",
         image: "/images/game_nut_and_bolt.png"
       }
     ]
@@ -524,8 +540,8 @@ export const GAMES_CATALOG: GameItem[] = [
     releaseQuarter: "Q4 2027",
     engine: "Unity 6 LTS (C# URP)",
     platforms: ["iOS", "Android", "Web"],
-    description: "Build, zone, and customize a bustling 3D coastal metropolis with amusement parks, bullet trains, and joyful citizens.",
-    usp: "Sandbox creative freedom paired with light tycoon trade routes and cooperative mayor clubs.",
+    description: "Build, zone, and customize a bustling 3D coastal metropolis with amusement parks, bullet trains, high-rise eco-towers, and joyful citizens under Mayor Penelope and her corgi mascot Sparky.",
+    usp: "Sandbox creative freedom paired with light tycoon trade routes, transit planning, and cooperative mayor clubs.",
     rating: 4.9,
     players: "City Builder",
     coverImage: "/images/game_happy_city.png",
@@ -536,18 +552,26 @@ export const GAMES_CATALOG: GameItem[] = [
     featured: false,
     characters: [
       {
-        name: "Mayor Penelope",
+        name: "Mayor Penelope (Human)",
         role: "Metropolis Chief Architect & Mayor",
         portrait: "/images/character_mimo_cat.png",
-        personality: "Visionary city planner who dreams of green parks, bullet trains, and joyful neighborhoods.",
-        signatureAbility: "Metro Blueprint (Boosts city tax revenue and citizen happiness)",
-        activityQuote: "The coastal express is running on time! Let's build the new Ferris wheel park!"
+        personality: "Visionary young city planner in a pastel teal blazer, carrying architectural blueprints and tablet.",
+        signatureAbility: "Grand Blueprint (Boosts city tax revenue and unlocks mega Ferris wheel landmarks)",
+        activityQuote: "The coastal express is running smoothly! Time to break ground on the seaside theme park!"
+      },
+      {
+        name: "Sparky the Corgi (Pet)",
+        role: "Construction Inspector Mascot",
+        portrait: "/images/character_baby_dragon.png",
+        personality: "Energetic corgi wearing a tiny yellow safety hardhat and high-visibility orange vest.",
+        signatureAbility: "Safety Patrol (Reduces building construction timers by 30%)",
+        activityQuote: "Arf arf! The foundation is solid and ready for the new skyscraper!"
       }
     ],
     activities: [
       {
-        title: "3D Coastal Metropolis Planning",
-        description: "Zone colorful skyscrapers, elevated transit rail networks, and amusement parks along the sunny bay.",
+        title: "3D Coastal Metropolis Master Planning",
+        description: "Zone colorful modern skyscrapers, elevated high-speed monorail transit networks, and sunny boardwalk piers along the bay.",
         image: "/images/game_happy_city.png"
       }
     ]
