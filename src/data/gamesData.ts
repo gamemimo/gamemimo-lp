@@ -74,7 +74,7 @@ export const GAMES_CATALOG: GameItem[] = [
       {
         name: "Pip the Fluffy Lamb",
         role: "Pasture Mascot & Wool Producer",
-        portrait: "/images/character_baby_dragon.png",
+        portrait: "/images/characters/character_pip_lamb.png",
         personality: "Playful, gentle, follows the tractor everywhere.",
         signatureAbility: "Rainbow Fleece (Bonus crafting materials)",
         activityQuote: "Baa! The clover patch is ready for snacking!"
@@ -333,7 +333,7 @@ export const GAMES_CATALOG: GameItem[] = [
       {
         name: "Boba Bear",
         role: "Sweet Shop Owner & Tidy Master",
-        portrait: "/images/character_mimo_cat.png",
+        portrait: "/images/characters/character_boba_bear.png",
         personality: "Obsessed with neat rows of milk tea and rainbow sodas.",
         signatureAbility: "Shelf Vacuum (Instantly clears one crowded rack)",
         activityQuote: "Everything in its place, and three boba teas in a row!"
@@ -373,7 +373,7 @@ export const GAMES_CATALOG: GameItem[] = [
       {
         name: "Bella Bunny",
         role: "Store Manager & Head Cashier",
-        portrait: "/images/character_baby_dragon.png",
+        portrait: "/images/characters/character_bella_bunny.png",
         personality: "Sweet, organized, wears a floral apron and greets every shopper with a warm smile.",
         signatureAbility: "Speed Checkout (+50% cashier speed during rush hour)",
         activityQuote: "Welcome to Kawaii Mart! Fresh carrots and cold boba are in aisle one!"
@@ -381,7 +381,7 @@ export const GAMES_CATALOG: GameItem[] = [
       {
         name: "Mochi the Cat Helper",
         role: "Produce Stocker & Bakery Assistant",
-        portrait: "/images/character_mimo_cat.png",
+        portrait: "/images/characters/character_mochi_cat.png",
         personality: "Fast on his paws, balances apple baskets on his head with ease.",
         signatureAbility: "Stack Master (Doubles inventory carry limit)",
         activityQuote: "Apples restocked! Time to check on the fresh croissants!"
@@ -460,7 +460,7 @@ export const GAMES_CATALOG: GameItem[] = [
       {
         name: "Chef Leo",
         role: "Executive Master Chef & Patissier",
-        portrait: "/images/character_mimo_cat.png",
+        portrait: "/images/characters/character_chef_leo.png",
         personality: "Enthusiastic French-Italian culinary prodigy with a curly mustache, tall white toque, and red neckerchief.",
         signatureAbility: "Frenzy Sizzle (Instantly completes all active stove orders)",
         activityQuote: "Bon Appétit! Three gourmet burgers and hot ramen on the pass!"
@@ -468,8 +468,8 @@ export const GAMES_CATALOG: GameItem[] = [
       {
         name: "Basil the Kitten",
         role: "Sous-Chef & Ingredient Inspector",
-        portrait: "/images/character_baby_dragon.png",
-        personality: "Curious white calico kitten wearing a mini chef bandana who rings the service bell.",
+        portrait: "/images/characters/character_basil_kitten.png",
+        personality: "Curious orange tabby kitten wearing a blue bandana and mini apron who rings the service bell.",
         signatureAbility: "Golden Garnish (+25% bonus coin tip on served orders)",
         activityQuote: "Meow! The sushi rice is seasoned to perfection, Chef!"
       }
@@ -507,7 +507,7 @@ export const GAMES_CATALOG: GameItem[] = [
       {
         name: "Emma the Inventor",
         role: "Master Engineer & Animal Rescuer",
-        portrait: "/images/character_baby_dragon.png",
+        portrait: "/images/characters/character_emma_inventor.png",
         personality: "Clever, energetic teenage mechanic in denim overalls, toolbelt, and yellow safety goggles on her forehead.",
         signatureAbility: "Magnetic Wrench (Instantly unscrews any stuck or locked bolt)",
         activityQuote: "Hold on little buddy! Check the gravity angle and unscrew the blue bolt first!"
@@ -515,7 +515,7 @@ export const GAMES_CATALOG: GameItem[] = [
       {
         name: "Milo the Golden Pup",
         role: "Rescue Sanctuary Mascot",
-        portrait: "/images/character_mimo_cat.png",
+        portrait: "/images/characters/character_milo_pup.png",
         personality: "Fluffy, wide-eyed golden retriever puppy who gives joyful tail wags when freed from puzzle cages.",
         signatureAbility: "Joyful Bark (Reveals the next optimal unscrewing move)",
         activityQuote: "Woof! Thank you Emma! Let's go help the kittens next!"
@@ -554,7 +554,7 @@ export const GAMES_CATALOG: GameItem[] = [
       {
         name: "Mayor Penelope",
         role: "Metropolis Chief Architect & Mayor",
-        portrait: "/images/character_mimo_cat.png",
+        portrait: "/images/characters/character_mayor_penelope.png",
         personality: "Visionary young city planner in a pastel teal blazer, carrying architectural blueprints and tablet.",
         signatureAbility: "Grand Blueprint (Boosts city tax revenue and unlocks mega Ferris wheel landmarks)",
         activityQuote: "The coastal express is running smoothly! Time to break ground on the seaside theme park!"
@@ -562,7 +562,7 @@ export const GAMES_CATALOG: GameItem[] = [
       {
         name: "Sparky the Corgi",
         role: "Construction Inspector Mascot",
-        portrait: "/images/character_baby_dragon.png",
+        portrait: "/images/characters/character_sparky_corgi.png",
         personality: "Energetic corgi wearing an official mini yellow safety hardhat and high-visibility orange vest.",
         signatureAbility: "Safety Patrol (Reduces building construction timers by 30%)",
         activityQuote: "Arf arf! The foundation is solid and ready for the new skyscraper!"
