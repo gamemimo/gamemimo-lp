@@ -197,9 +197,9 @@ export const GAMES_CATALOG: GameItem[] = [
     featured: true,
     characters: [
       {
-        name: "Mie Sato",
+        name: "Mie Sato (Authentic Character Asset)",
         role: "Lead Fashion Protagonist & Stylist",
-        portrait: "/images/character_mimo_cat.png",
+        portrait: "/images/characters/character_mie_sato.png",
         personality: "Creative, chic, trendsetting, loves elegant coats and pastel berets.",
         signatureAbility: "Haute Couture Glow (Unlocks 5-star runway spotlight bonus)",
         activityQuote: "The winter runway awaits! Let's find the perfect wool coat and glitter handbag!"
@@ -245,17 +245,17 @@ export const GAMES_CATALOG: GameItem[] = [
     featured: true,
     characters: [
       {
-        name: "Kael Voss",
+        name: "Kael Voss (Authentic Hero Asset)",
         role: "Precision Vanguard (Railburst Carbine)",
-        portrait: "/images/character_baby_dragon.png",
+        portrait: "/images/characters/character_kael_voss.png",
         personality: "Route-obsessed pathfinder with dry humor and rock-solid discipline under swarm pressure.",
         signatureAbility: "Overcharged Railburst (Pierces entire enemy street lane)",
         activityQuote: "Keep moving through the Neon Causeway. I'll cover the rear lane!"
       },
       {
-        name: "Nyra Sol",
+        name: "Nyra Sol (Authentic Hero Asset)",
         role: "Aggressive Swarm Breaker (Helix SMG & Vials)",
-        portrait: "/images/character_mimo_cat.png",
+        portrait: "/images/characters/character_nyra_sol.png",
         personality: "Charismatic, protective former street medic armed with stolen hybrid alien biotech.",
         signatureAbility: "Biotech Grenade Burst (Clears dense swarms in radius)",
         activityQuote: "They want the lower city? They'll have to get through my biotech SMG first!"
@@ -563,7 +563,7 @@ export const GAMES_CATALOG: GameItem[] = [
         name: "Sparky the Corgi (Pet)",
         role: "Construction Inspector Mascot",
         portrait: "/images/character_baby_dragon.png",
-        personality: "Energetic corgi wearing a tiny yellow safety hardhat and high-visibility orange vest.",
+        personality: "Energetic corgi wearing an official mini yellow safety hardhat and high-visibility orange vest.",
         signatureAbility: "Safety Patrol (Reduces building construction timers by 30%)",
         activityQuote: "Arf arf! The foundation is solid and ready for the new skyscraper!"
       }

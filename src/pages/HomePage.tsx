@@ -26,8 +26,8 @@ export const HomePage: React.FC<HomePageProps> = ({
 
   const triggerConfetti = () => {
     confetti({
-      particleCount: 60,
-      spread: 70,
+      particleCount: 70,
+      spread: 80,
       origin: { y: 0.6 },
       colors: ['#FF5E7E', '#FFD166', '#06D6A0', '#4FACFE', '#FFAA00']
     });
@@ -37,15 +37,15 @@ export const HomePage: React.FC<HomePageProps> = ({
   const featuredHighlights = GAMES_CATALOG.filter(g => g.featured && (g.year === 2025 || g.year === 2026));
 
   return (
-    <div className="space-y-24 pb-20">
+    <div className="space-y-24 pb-20 overflow-x-hidden">
       
-      {/* 1. DEEP MULTI-LAYERED 3D SCROLL PARALLAX HERO */}
-      <section className="relative overflow-hidden pt-12 pb-24 lg:pt-16 lg:pb-36 bg-gradient-to-b from-base-100 via-base-200/50 to-base-100 min-h-[750px] flex items-center">
+      {/* 1. CINEMATIC LARGE-SCALE 3D SCROLL PARALLAX HERO (RESPONSIVE FOR 1080P, 1440P & 4K) */}
+      <section className="relative overflow-hidden pt-16 pb-28 lg:pt-24 lg:pb-44 bg-gradient-to-b from-base-100 via-base-200/50 to-base-100 min-h-[90vh] xl:min-h-[100vh] flex items-center justify-center">
         
-        {/* Layer 0: Distant Sky & Fairy Castle Background (Slow Scroll Drift 0.1x) */}
+        {/* Layer 0: Distant Sky Castle & Floating Islands (0.12x slow drift) */}
         <div
           className="absolute inset-0 pointer-events-none overflow-hidden transition-transform duration-75 ease-out"
-          style={{ transform: `translateY(${scrollY * 0.12}px) scale(1.05)` }}
+          style={{ transform: `translateY(${scrollY * 0.12}px) scale(1.08)` }}
         >
           <img
             src="/images/gamemimo_hero_banner.png"
@@ -54,13 +54,16 @@ export const HomePage: React.FC<HomePageProps> = ({
           />
         </div>
 
-        {/* Layer 1: Midground Floating Toy Biplane with Smoke (0.35x Drift) */}
+        {/* Layer 1: Foreground Big Toy Biplane (Dynamic zoom, fast flyby & depth blur) */}
         <div
-          className="absolute top-20 right-8 sm:right-24 pointer-events-none z-10 hidden md:block transition-transform duration-100 ease-out"
-          style={{ transform: `translateY(${-scrollY * 0.25}px) translateX(${-scrollY * 0.1}px)` }}
+          className="absolute top-12 right-[-5%] sm:right-0 lg:right-[5%] xl:right-[8%] pointer-events-none z-30 transition-transform duration-100 ease-out"
+          style={{
+            transform: `translateY(${-scrollY * 0.45}px) translateX(${-scrollY * 0.25}px) scale(${1 + scrollY * 0.0006})`,
+            filter: scrollY > 150 ? 'blur(2px)' : 'none'
+          }}
         >
           <div
-            className="w-32 h-32 sm:w-44 sm:h-44 cursor-pointer pointer-events-auto hover:scale-110 active:scale-95 transition-transform"
+            className="w-64 h-64 sm:w-80 sm:h-80 lg:w-[420px] lg:h-[420px] xl:w-[540px] xl:h-[540px] cursor-pointer pointer-events-auto hover:scale-110 active:scale-95 transition-transform"
             onClick={triggerConfetti}
             title="Happy Red Biplane — Click me!"
           >
@@ -72,13 +75,27 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
         </div>
 
-        {/* Layer 2: Foreground Left — Baby Draco Dragon on Wooden Railing (0.6x Drift) */}
+        {/* Layer 2: Big Fluffy Cloud Foreground Overlay (Sweeps bottom-left) */}
         <div
-          className="absolute top-12 left-4 sm:left-12 z-20 transition-transform duration-100 ease-out"
-          style={{ transform: `translateY(${scrollY * 0.15}px)` }}
+          className="absolute -bottom-10 -left-20 sm:left-[-5%] lg:left-[2%] pointer-events-none z-30 opacity-70 transition-transform duration-100 ease-out"
+          style={{ transform: `translateY(${-scrollY * 0.35}px) translateX(${scrollY * 0.15}px) scale(1.1)` }}
+        >
+          <div className="w-80 h-44 sm:w-[500px] sm:h-[260px] lg:w-[700px] lg:h-[350px]">
+            <img
+              src="/images/item_cloud_soft.png"
+              alt="Floating Cloud"
+              className="w-full h-full object-contain filter blur-md"
+            />
+          </div>
+        </div>
+
+        {/* Layer 3: Foreground Left — Big Baby Draco on Wooden Railing */}
+        <div
+          className="absolute top-10 left-[-2%] sm:left-[2%] lg:left-[6%] xl:left-[10%] z-20 transition-transform duration-100 ease-out"
+          style={{ transform: `translateY(${scrollY * 0.2}px)` }}
         >
           <div
-            className="w-28 h-28 sm:w-40 sm:h-40 rounded-3xl p-1 cursor-pointer pointer-events-auto hover:scale-110 active:scale-95 transition-transform animate-float-slow"
+            className="w-60 h-60 sm:w-80 sm:h-80 lg:w-[400px] lg:h-[400px] xl:w-[480px] xl:h-[480px] p-2 cursor-pointer pointer-events-auto hover:scale-108 active:scale-95 transition-transform animate-float-slow"
             onClick={triggerConfetti}
             title="Baby Draco — Click for magic sparkles!"
           >
@@ -87,19 +104,19 @@ export const HomePage: React.FC<HomePageProps> = ({
               alt="Baby Dragon"
               className="w-full h-full object-contain filter drop-shadow-2xl"
             />
-            <div className="absolute -bottom-2 -right-1 badge badge-primary badge-xs sm:badge-sm font-extrabold shadow animate-bounce">
-              Draco 🐲
+            <div className="absolute bottom-6 right-6 badge badge-primary badge-sm sm:badge-md lg:badge-lg font-extrabold shadow-xl animate-bounce">
+              Baby Draco 🐲
             </div>
           </div>
         </div>
 
-        {/* Layer 3: Foreground Right — Mimo Cat with Aviator Scarf (0.7x Drift) */}
+        {/* Layer 4: Foreground Right — Big Mimo Cat with Aviator Scarf */}
         <div
-          className="absolute bottom-16 right-4 sm:right-16 z-20 transition-transform duration-100 ease-out"
-          style={{ transform: `translateY(${-scrollY * 0.2}px)` }}
+          className="absolute bottom-10 right-[-2%] sm:right-[3%] lg:right-[7%] xl:right-[12%] z-20 transition-transform duration-100 ease-out"
+          style={{ transform: `translateY(${-scrollY * 0.22}px)` }}
         >
           <div
-            className="w-28 h-28 sm:w-40 sm:h-40 rounded-3xl p-1 cursor-pointer pointer-events-auto hover:scale-110 active:scale-95 transition-transform animate-float-reverse"
+            className="w-60 h-60 sm:w-80 sm:h-80 lg:w-[380px] lg:h-[380px] xl:w-[460px] xl:h-[460px] p-2 cursor-pointer pointer-events-auto hover:scale-108 active:scale-95 transition-transform animate-float-reverse"
             onClick={triggerConfetti}
             title="Mimo Cat — Click to wave!"
           >
@@ -108,19 +125,19 @@ export const HomePage: React.FC<HomePageProps> = ({
               alt="Mimo Cat"
               className="w-full h-full object-contain filter drop-shadow-2xl"
             />
-            <div className="absolute -top-2 -left-1 badge badge-warning badge-xs sm:badge-sm font-extrabold shadow animate-bounce">
-              Mimo 🐱
+            <div className="absolute top-6 left-6 badge badge-warning badge-sm sm:badge-md lg:badge-lg font-extrabold shadow-xl animate-bounce">
+              Mimo Cat 🐱
             </div>
           </div>
         </div>
 
-        {/* Layer 4: Magic Crystal Diamond Floating Particles (0.85x Drift) */}
+        {/* Layer 5: Giant Magic Crystal Gem Floating in Space */}
         <div
-          className="absolute bottom-24 left-10 sm:left-28 z-20 hidden sm:block transition-transform duration-100 ease-out"
-          style={{ transform: `translateY(${-scrollY * 0.3}px) rotate(${scrollY * 0.05}deg)` }}
+          className="absolute bottom-28 left-[12%] sm:left-[18%] lg:left-[22%] z-20 hidden sm:block transition-transform duration-100 ease-out"
+          style={{ transform: `translateY(${-scrollY * 0.38}px) rotate(${scrollY * 0.08}deg)` }}
         >
           <div
-            className="w-20 h-20 sm:w-28 sm:h-28 cursor-pointer pointer-events-auto hover:scale-110 transition-transform animate-float-slow"
+            className="w-28 h-28 sm:w-40 sm:h-40 lg:w-[220px] lg:h-[220px] cursor-pointer pointer-events-auto hover:scale-115 transition-transform animate-float-slow"
             onClick={triggerConfetti}
             title="Luminous Magic Crystal"
           >
@@ -133,18 +150,18 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
 
         {/* Central Main Hero Text Content */}
-        <div className="relative z-30 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative z-30 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           
           {/* Brand Division Pill */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-base-100/90 border border-base-300 shadow-sm mb-6 backdrop-blur-md">
-            <span className="w-2.5 h-2.5 rounded-full bg-success animate-ping"></span>
-            <span className="text-xs sm:text-sm font-extrabold text-base-content/80 uppercase tracking-wider font-['Nunito']">
-              ✨ Casual &bull; Cozy &bull; Family Friendly Gaming
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-base-100/95 border border-base-300 shadow-lg mb-8 backdrop-blur-md">
+            <span className="w-3 h-3 rounded-full bg-success animate-ping"></span>
+            <span className="text-xs sm:text-sm lg:text-base font-extrabold text-base-content/90 uppercase tracking-wider font-['Nunito']">
+              ✨ Casual &bull; Cozy &bull; Family Friendly Gaming Studio
             </span>
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight font-['Fredoka'] text-base-content leading-tight">
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight font-['Fredoka'] text-base-content leading-tight">
             Joyful Casual Games. <br />
             <span className="bg-gradient-to-r from-pink-500 via-orange-400 to-amber-400 bg-clip-text text-transparent">
               Cozy Worlds. Play Anywhere.
@@ -152,38 +169,38 @@ export const HomePage: React.FC<HomePageProps> = ({
           </h1>
 
           {/* Subtitle */}
-          <p className="mt-6 text-base sm:text-xl text-base-content/80 max-w-2xl mx-auto font-medium leading-relaxed font-['Nunito']">
+          <p className="mt-6 sm:mt-8 text-base sm:text-xl lg:text-2xl text-base-content/85 max-w-3xl mx-auto font-medium leading-relaxed font-['Nunito']">
             GameMimo is the casual game studio of <strong>SGGame</strong>. We design delightful 2.5D farming simulators, satisfying 3D goods sorting, and instant browser arcade games crafted for pure player joy.
           </p>
 
           {/* Main CTAs */}
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
               onClick={() => onNavigate('games')}
-              className="btn btn-lg btn-primary rounded-full px-8 font-bold shadow-xl shadow-primary/30 gap-2 hover:scale-105 transition-transform w-full sm:w-auto"
+              className="btn btn-lg btn-primary rounded-full px-8 sm:px-10 font-bold shadow-2xl shadow-primary/35 gap-2 hover:scale-105 transition-transform w-full sm:w-auto text-base sm:text-lg"
             >
-              <Sparkles className="w-5 h-5" />
+              <Sparkles className="w-6 h-6" />
               <span>Explore 2025–2026 Highlights</span>
             </button>
 
             <button
               onClick={() => { triggerConfetti(); onOpenInstantPlay(); }}
-              className="btn btn-lg btn-outline btn-secondary rounded-full px-8 font-bold gap-2 hover:scale-105 transition-transform w-full sm:w-auto"
+              className="btn btn-lg btn-outline btn-secondary rounded-full px-8 sm:px-10 font-bold gap-2 hover:scale-105 transition-transform w-full sm:w-auto text-base sm:text-lg bg-base-100/70"
             >
-              <Gamepad2 className="w-5 h-5" />
+              <Gamepad2 className="w-6 h-6" />
               <span>Play Instant in Browser</span>
             </button>
           </div>
 
           {/* Mobile Store Development Badges */}
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <a
               href="https://apps.apple.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-sm btn-neutral bg-black text-white hover:bg-neutral-800 rounded-full px-4 font-semibold text-xs gap-1.5 shadow"
+              className="btn btn-sm sm:btn-md btn-neutral bg-black text-white hover:bg-neutral-800 rounded-full px-5 font-semibold text-xs sm:text-sm gap-2 shadow-lg"
             >
-              <Smartphone className="w-3.5 h-3.5" />
+              <Smartphone className="w-4 h-4" />
               <span>Apple App Store (TestFlight)</span>
             </a>
 
@@ -191,43 +208,43 @@ export const HomePage: React.FC<HomePageProps> = ({
               href="https://play.google.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-sm btn-outline rounded-full px-4 font-semibold text-xs gap-1.5 bg-base-100/80"
+              className="btn btn-sm sm:btn-md btn-outline rounded-full px-5 font-semibold text-xs sm:text-sm gap-2 bg-base-100/90 shadow-sm"
             >
-              <Download className="w-3.5 h-3.5" />
+              <Download className="w-4 h-4" />
               <span>Google Play Store (Early Access)</span>
             </a>
           </div>
 
           {/* Studio Metrics */}
-          <div className="mt-12 pt-6 border-t border-base-content/10 grid grid-cols-2 md:grid-cols-4 gap-4 text-left max-w-3xl mx-auto">
-            <div className="p-3 rounded-2xl bg-base-100/70 border border-base-200 shadow-sm flex items-center gap-3">
-              <Users className="w-6 h-6 text-pink-500 shrink-0" />
+          <div className="mt-14 pt-8 border-t border-base-content/15 grid grid-cols-2 md:grid-cols-4 gap-4 text-left max-w-4xl mx-auto">
+            <div className="p-4 rounded-3xl bg-base-100/80 border border-base-200 shadow-md flex items-center gap-3">
+              <Users className="w-7 h-7 text-pink-500 shrink-0" />
               <div>
-                <div className="font-extrabold text-xl font-['Fredoka']">10M+</div>
+                <div className="font-extrabold text-2xl font-['Fredoka']">10M+</div>
                 <div className="text-xs text-base-content/70 font-semibold">Global Players</div>
               </div>
             </div>
 
-            <div className="p-3 rounded-2xl bg-base-100/70 border border-base-200 shadow-sm flex items-center gap-3">
-              <Gamepad2 className="w-6 h-6 text-orange-500 shrink-0" />
+            <div className="p-4 rounded-3xl bg-base-100/80 border border-base-200 shadow-md flex items-center gap-3">
+              <Gamepad2 className="w-7 h-7 text-orange-500 shrink-0" />
               <div>
-                <div className="font-extrabold text-xl font-['Fredoka']">12+</div>
+                <div className="font-extrabold text-2xl font-['Fredoka']">12+</div>
                 <div className="text-xs text-base-content/70 font-semibold">Joyful Titles</div>
               </div>
             </div>
 
-            <div className="p-3 rounded-2xl bg-base-100/70 border border-base-200 shadow-sm flex items-center gap-3">
-              <Trophy className="w-6 h-6 text-amber-500 shrink-0" />
+            <div className="p-4 rounded-3xl bg-base-100/80 border border-base-200 shadow-md flex items-center gap-3">
+              <Trophy className="w-7 h-7 text-amber-500 shrink-0" />
               <div>
-                <div className="font-extrabold text-xl font-['Fredoka']">4.8 ★</div>
+                <div className="font-extrabold text-2xl font-['Fredoka']">4.8 ★</div>
                 <div className="text-xs text-base-content/70 font-semibold">Store Rating</div>
               </div>
             </div>
 
-            <div className="p-3 rounded-2xl bg-base-100/70 border border-base-200 shadow-sm flex items-center gap-3">
-              <ShieldCheck className="w-6 h-6 text-emerald-500 shrink-0" />
+            <div className="p-4 rounded-3xl bg-base-100/80 border border-base-200 shadow-md flex items-center gap-3">
+              <ShieldCheck className="w-7 h-7 text-emerald-500 shrink-0" />
               <div>
-                <div className="font-extrabold text-xl font-['Fredoka']">100%</div>
+                <div className="font-extrabold text-2xl font-['Fredoka']">100%</div>
                 <div className="text-xs text-base-content/70 font-semibold">COPPA Safe</div>
               </div>
             </div>
@@ -246,7 +263,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               <Sparkles className="w-3.5 h-3.5" />
               <span>Studio Highlights</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold font-['Fredoka'] text-base-content tracking-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-['Fredoka'] text-base-content tracking-tight">
               Featured 2025–2026 Releases
             </h2>
             <p className="text-sm sm:text-base text-base-content/70 font-['Nunito'] mt-1">
@@ -256,7 +273,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
           <button
             onClick={() => onNavigate('games')}
-            className="btn btn-sm btn-ghost text-primary font-bold gap-1 mt-4 md:mt-0 hover:translate-x-1 transition-transform"
+            className="btn btn-sm sm:btn-md btn-ghost text-primary font-bold gap-1 mt-4 md:mt-0 hover:translate-x-1 transition-transform"
           >
             <span>View Full Portfolio (12 Games)</span>
             <ArrowRight className="w-4 h-4" />
@@ -272,7 +289,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               className="card bg-base-100 border border-base-200 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 rounded-3xl overflow-hidden group cursor-pointer flex flex-col justify-between"
             >
               {/* Mock Gameplay Screenshot Banner */}
-              <div className="relative h-64 sm:h-72 overflow-hidden bg-base-200">
+              <div className="relative h-64 sm:h-72 lg:h-80 overflow-hidden bg-base-200">
                 <img
                   src={game.coverImage}
                   alt={game.title}
@@ -296,7 +313,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   <span className="text-xs uppercase tracking-wider font-extrabold text-amber-300 drop-shadow">
                     {game.genre}
                   </span>
-                  <h3 className="text-2xl font-extrabold font-['Fredoka'] drop-shadow-md">
+                  <h3 className="text-2xl sm:text-3xl font-extrabold font-['Fredoka'] drop-shadow-md">
                     {game.title}
                   </h3>
                 </div>
@@ -304,30 +321,28 @@ export const HomePage: React.FC<HomePageProps> = ({
 
               {/* Card Details & Actions */}
               <div className="p-6 space-y-4">
-                <p className="text-sm text-base-content/80 font-['Nunito'] leading-relaxed line-clamp-2">
+                <p className="text-sm sm:text-base text-base-content/80 font-['Nunito'] leading-relaxed line-clamp-2">
                   {game.description}
                 </p>
 
-                <div className="p-3 rounded-2xl bg-base-200/60 border border-base-300 text-xs font-semibold text-primary">
+                <div className="p-3.5 rounded-2xl bg-base-200/60 border border-base-300 text-xs sm:text-sm font-semibold text-primary">
                   💡 <strong>Studio USP:</strong> {game.usp}
                 </div>
 
-                <div className="pt-2 border-t border-base-200 flex items-center justify-between">
-                  <div className="flex items-center gap-1.5 text-xs font-bold text-amber-500">
+                <div className="pt-3 border-t border-base-200 flex items-center justify-between">
+                  <div className="flex items-center gap-1.5 text-xs sm:text-sm font-bold text-amber-500">
                     <Star className="w-4 h-4 fill-amber-400" />
                     <span>{game.rating}</span>
                     <span className="text-base-content/50 font-normal">({game.players})</span>
                   </div>
 
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={(e) => { e.stopPropagation(); onSelectGame(game); }}
-                      className="btn btn-sm btn-primary rounded-full px-4 font-bold gap-1 shadow"
-                    >
-                      <ArrowRight className="w-3.5 h-3.5" />
-                      <span>View Game & Characters</span>
-                    </button>
-                  </div>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); onSelectGame(game); }}
+                    className="btn btn-sm sm:btn-md btn-primary rounded-full px-5 font-bold gap-1.5 shadow-md"
+                  >
+                    <ArrowRight className="w-4 h-4" />
+                    <span>View Game & Characters</span>
+                  </button>
                 </div>
               </div>
             </div>
@@ -369,13 +384,13 @@ export const HomePage: React.FC<HomePageProps> = ({
                   One Unified Universe of Joyful Worlds
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-200 font-['Nunito']">
-                  Draco the Dragon &bull; Mimo the Kitten &bull; Barnaby the Farmer &bull; Mie the Stylist &bull; Kael & Nyra
+                  Draco the Dragon &bull; Mimo the Kitten &bull; Barnaby the Farmer &bull; Mie the Stylist &bull; Kael & Nyra &bull; Chef Leo
                 </p>
               </div>
 
               <button
                 onClick={() => onNavigate('games')}
-                className="btn btn-sm btn-primary rounded-full px-5 font-bold shrink-0 shadow"
+                className="btn btn-sm sm:btn-md btn-primary rounded-full px-6 font-bold shrink-0 shadow"
               >
                 Explore All Universes
               </button>
@@ -424,7 +439,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               Discover Our 2027 Dragon & Tycoon Pipeline
             </h3>
             <p className="text-sm text-base-content/70 font-['Nunito'] max-w-xl">
-              From <em>Magic Merge: Dragon Sanctuary</em> to <em>Kawaii Mart Supermarket</em> and <em>Melody Paws</em>. Explore our complete roadmap.
+              From <em>Magic Merge: Dragon Sanctuary</em> to <em>Kawaii Mart Supermarket</em>, <em>Cooking Hero</em>, and <em>Happy City</em>. Explore our complete roadmap.
             </p>
           </div>
 
