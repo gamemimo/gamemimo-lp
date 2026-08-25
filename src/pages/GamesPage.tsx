@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { GAMES_CATALOG, type GameItem } from '../data/gamesData';
-import { Search, Sparkles, Smartphone, Monitor, Star, ExternalLink, Play, Filter } from 'lucide-react';
+import { Search, Sparkles, Smartphone, Monitor, Star, ArrowRight, Filter } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 interface GamesPageProps {
@@ -13,15 +13,12 @@ export const GamesPage: React.FC<GamesPageProps> = ({ onSelectGame }) => {
   const [categoryFilter, setCategoryFilter] = useState<'all' | 'holiday' | 'instant-web'>('all');
 
   const filteredGames = GAMES_CATALOG.filter(game => {
-    // Search query match
     const matchesSearch = game.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                           game.genre.toLowerCase().includes(searchTerm.toLowerCase()) ||
                           game.tags.some(t => t.toLowerCase().includes(searchTerm.toLowerCase()));
 
-    // Year filter
     const matchesYear = yearFilter === 'all' || game.year === yearFilter;
 
-    // Category filter
     const matchesCategory = categoryFilter === 'all' || 
                             (categoryFilter === 'holiday' && game.category === 'holiday') ||
                             (categoryFilter === 'instant-web' && game.hasPlayableWeb);
@@ -50,7 +47,7 @@ export const GamesPage: React.FC<GamesPageProps> = ({ onSelectGame }) => {
           GameMimo Master Games Catalog
         </h1>
         <p className="mt-4 text-base sm:text-lg text-base-content/70 font-['Nunito']">
-          Explore our complete portfolio spanning 2025, 2026 launches, and upcoming 2027 titles across mobile and web.
+          Click any game thumbnail to view full character designs, in-game activity captures, and play in browser.
         </p>
       </div>
 
@@ -126,7 +123,8 @@ export const GamesPage: React.FC<GamesPageProps> = ({ onSelectGame }) => {
           filteredGames.map(game => (
             <div
               key={game.id}
-              className="card bg-base-100 border border-base-200 shadow-md hover:shadow-xl transition-all duration-300 rounded-3xl overflow-hidden group flex flex-col justify-between"
+              onClick={() => onSelectGame(game)}
+              className="card bg-base-100 border border-base-200 shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 rounded-3xl overflow-hidden group cursor-pointer flex flex-col justify-between"
             >
               {/* Cover Image */}
               <div className="relative h-56 overflow-hidden bg-base-200">
@@ -182,7 +180,7 @@ export const GamesPage: React.FC<GamesPageProps> = ({ onSelectGame }) => {
                 <div className="pt-3 border-t border-base-200 flex items-center justify-between">
                   <div>
                     <div className="flex items-center gap-1 text-xs font-extrabold text-amber-500">
-                      <Star className="w-3.5 h-3.5 fill-amber-400" />
+                      <Star className="w-4 h-4 fill-amber-400" />
                       <span>{game.rating}</span>
                       <span className="text-base-content/50 font-normal">({game.players})</span>
                     </div>
@@ -192,23 +190,13 @@ export const GamesPage: React.FC<GamesPageProps> = ({ onSelectGame }) => {
                   </div>
 
                   <div className="flex gap-2">
-                    {game.hasPlayableWeb ? (
-                      <button
-                        onClick={() => onSelectGame(game)}
-                        className="btn btn-sm btn-primary rounded-full px-3.5 font-bold gap-1 shadow"
-                      >
-                        <Play className="w-3.5 h-3.5 fill-current" />
-                        <span>Play</span>
-                      </button>
-                    ) : (
-                      <button
-                        onClick={() => onSelectGame(game)}
-                        className="btn btn-sm btn-outline rounded-full px-3.5 font-bold gap-1"
-                      >
-                        <ExternalLink className="w-3.5 h-3.5" />
-                        <span>Details</span>
-                      </button>
-                    )}
+                    <button
+                      onClick={(e) => { e.stopPropagation(); onSelectGame(game); }}
+                      className="btn btn-sm btn-primary rounded-full px-3.5 font-bold gap-1 shadow"
+                    >
+                      <ArrowRight className="w-3.5 h-3.5" />
+                      <span>Details & Play</span>
+                    </button>
                   </div>
                 </div>
               </div>

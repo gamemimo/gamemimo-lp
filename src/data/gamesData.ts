@@ -67,7 +67,7 @@ export const GAMES_CATALOG: GameItem[] = [
         name: "Barnaby the Farmer",
         role: "Head Harvester & Orchard Keeper",
         portrait: "/images/character_mimo_cat.png",
-        personality: "Cheerful, hardworking, loves pumpkin pie and morning sunshine.",
+        personality: "Cheerful, hardworking, loves warm apple cider and morning sunshine.",
         signatureAbility: "Golden Harvest Boost (2x crop speed)",
         activityQuote: "Fresh morning dew on golden wheat! Time to fire up the bakery ovens!"
       },
@@ -329,6 +329,16 @@ export const GAMES_CATALOG: GameItem[] = [
     googlePlayUrl: "https://play.google.com/store/apps/details?id=com.gamemimo.triplematchjoy",
     tags: ["3D Match", "Goods Sort", "ASMR", "Relaxing"],
     featured: false,
+    characters: [
+      {
+        name: "Boba Bear",
+        role: "Sweet Shop Owner & Tidy Master",
+        portrait: "/images/character_mimo_cat.png",
+        personality: "Obsessed with neat rows of milk tea and rainbow sodas.",
+        signatureAbility: "Shelf Vacuum (Instantly clears one crowded rack)",
+        activityQuote: "Everything in its place, and three boba teas in a row!"
+      }
+    ],
     activities: [
       {
         title: "Boba & Sweet Shop 3D Organizing",
@@ -358,7 +368,32 @@ export const GAMES_CATALOG: GameItem[] = [
     appStoreUrl: "https://apps.apple.com/app/kawaii-mart-supermarket/id6400000008",
     googlePlayUrl: "https://play.google.com/store/apps/details?id=com.gamemimo.kawaiimart",
     tags: ["Tycoon", "Cute Animals", "Idle Arcade", "Simulation"],
-    featured: false
+    featured: false,
+    characters: [
+      {
+        name: "Bella Bunny",
+        role: "Store Manager & Head Cashier",
+        portrait: "/images/character_baby_dragon.png",
+        personality: "Sweet, organized, wears a floral apron and greets every shopper with a warm smile.",
+        signatureAbility: "Speed Checkout (+50% cashier speed during rush hour)",
+        activityQuote: "Welcome to Kawaii Mart! Fresh carrots and cold boba are in aisle one!"
+      },
+      {
+        name: "Mochi the Cat Helper",
+        role: "Produce Stocker & Bakery Assistant",
+        portrait: "/images/character_mimo_cat.png",
+        personality: "Fast on his paws, balances apple baskets on his head with ease.",
+        signatureAbility: "Stack Master (Doubles inventory carry limit)",
+        activityQuote: "Apples restocked! Time to check on the fresh croissants!"
+      }
+    ],
+    activities: [
+      {
+        title: "Aisle Stocking & Cashier Rush",
+        description: "Ring up happy animal customers and keep the bakery and fruit displays full.",
+        image: "/images/game_kawaii_mart.png"
+      }
+    ]
   },
   {
     id: "melody-paws",
@@ -381,7 +416,24 @@ export const GAMES_CATALOG: GameItem[] = [
     appStoreUrl: "https://apps.apple.com/app/melody-paws-kawaii-beat/id6400000009",
     googlePlayUrl: "https://play.google.com/store/apps/details?id=com.gamemimo.melodypaws",
     tags: ["Music", "Rhythm", "Cats", "Lo-Fi"],
-    featured: false
+    featured: false,
+    characters: [
+      {
+        name: "DJ Whiskers",
+        role: "Rhythm Maestro & Lo-Fi Beatmaker",
+        portrait: "/images/character_mimo_cat.png",
+        personality: "Groovy, relaxed, wears neon glowing headphones and purrs to the bassline.",
+        signatureAbility: "Purrfect Tempo (Extends combo grace period by 3 seconds)",
+        activityQuote: "Feel the lo-fi chill! Tap along with the neon keyboard!"
+      }
+    ],
+    activities: [
+      {
+        title: "Neon Rainbow Rhythm Lane Tapping",
+        description: "Tap descending musical notes with cute fluffy kitten paws to unlock hit lo-fi vinyl records.",
+        image: "/images/game_melody_paws.png"
+      }
+    ]
   },
   {
     id: "cooking-hero",
@@ -403,7 +455,24 @@ export const GAMES_CATALOG: GameItem[] = [
     appStoreUrl: "https://apps.apple.com/app/cooking-hero-world-tour/id6400000010",
     googlePlayUrl: "https://play.google.com/store/apps/details?id=com.gamemimo.cookinghero",
     tags: ["Cooking", "Time-Management", "Restaurant", "Fast"],
-    featured: false
+    featured: false,
+    characters: [
+      {
+        name: "Chef Bruno",
+        role: "Executive Pastry & Grill Chef",
+        portrait: "/images/character_baby_dragon.png",
+        personality: "Passionate culinarian who treats every burger and ramen bowl like a work of art.",
+        signatureAbility: "Frenzy Grill (Instantly cooks all dishes on the stove)",
+        activityQuote: "Order up! Three gourmet double burgers with golden cheddar!"
+      }
+    ],
+    activities: [
+      {
+        title: "High-Speed Kitchen Rush",
+        description: "Sizzle patties, roll sushi, and serve hungry animal guests before their patience timers run out.",
+        image: "/images/game_cooking_hero.png"
+      }
+    ]
   },
   {
     id: "nut-and-bolt",
@@ -425,7 +494,24 @@ export const GAMES_CATALOG: GameItem[] = [
     appStoreUrl: "https://apps.apple.com/app/nut-bolt-cute-rescue/id6400000011",
     googlePlayUrl: "https://play.google.com/store/apps/details?id=com.gamemimo.nutandbolt",
     tags: ["Puzzle", "Logic", "Physics", "Rescue"],
-    featured: false
+    featured: false,
+    characters: [
+      {
+        name: "Rusty the Rescue Bot",
+        role: "Mechanical Tool Specialist",
+        portrait: "/images/character_baby_dragon.png",
+        personality: "Clever, precise, carries magnetic screwdrivers and loves solving knotty spatial puzzles.",
+        signatureAbility: "Magnetic Wrench (Unscrews any stubborn bolt immediately)",
+        activityQuote: "Check the gravity angle! Unscrew the blue bolt first!"
+      }
+    ],
+    activities: [
+      {
+        title: "Tactile Wood & Metal Screw Puzzles",
+        description: "Carefully unscrew layered wooden bars in sequence to rescue cute kittens and puppies.",
+        image: "/images/game_nut_and_bolt.png"
+      }
+    ]
   },
   {
     id: "happy-city",
@@ -447,6 +533,23 @@ export const GAMES_CATALOG: GameItem[] = [
     appStoreUrl: "https://apps.apple.com/app/happy-city-dream-metropolis/id6400000012",
     googlePlayUrl: "https://play.google.com/store/apps/details?id=com.gamemimo.happycity",
     tags: ["City Builder", "Tycoon", "Sandbox", "Multiplayer"],
-    featured: false
+    featured: false,
+    characters: [
+      {
+        name: "Mayor Penelope",
+        role: "Metropolis Chief Architect & Mayor",
+        portrait: "/images/character_mimo_cat.png",
+        personality: "Visionary city planner who dreams of green parks, bullet trains, and joyful neighborhoods.",
+        signatureAbility: "Metro Blueprint (Boosts city tax revenue and citizen happiness)",
+        activityQuote: "The coastal express is running on time! Let's build the new Ferris wheel park!"
+      }
+    ],
+    activities: [
+      {
+        title: "3D Coastal Metropolis Planning",
+        description: "Zone colorful skyscrapers, elevated transit rail networks, and amusement parks along the sunny bay.",
+        image: "/images/game_happy_city.png"
+      }
+    ]
   }
 ];
