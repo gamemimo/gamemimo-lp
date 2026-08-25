@@ -66,7 +66,7 @@ export const GAMES_CATALOG: GameItem[] = [
       {
         name: "Barnaby the Farmer",
         role: "Head Harvester & Orchard Keeper",
-        portrait: "/images/character_mimo_cat.png",
+        portrait: "/images/characters/character_barnaby_farmer.png",
         personality: "Cheerful, hardworking, loves warm apple cider and morning sunshine.",
         signatureAbility: "Golden Harvest Boost (2x crop speed)",
         activityQuote: "Fresh morning dew on golden wheat! Time to fire up the bakery ovens!"
@@ -117,12 +117,12 @@ export const GAMES_CATALOG: GameItem[] = [
     featured: true,
     characters: [
       {
-        name: "Boo the Sweet Ghost",
-        role: "Shelf Guide & Match Cheerleader",
-        portrait: "/images/character_baby_dragon.png",
-        personality: "Cute, floaty, gives friendly spooky winks when you match 3 candies.",
+        name: "Luna the Teen Witch",
+        role: "Magic Candy Enchantress & Guide",
+        portrait: "/images/characters/character_luna_witch.png",
+        personality: "Playful, sparkly teen witch in starry purple robes with a sweet tooth for candy corn.",
         signatureAbility: "Candy Magnet (Auto-sorts 3 identical sweets into tray)",
-        activityQuote: "Boo! Don't let the candy corn tumble off the wooden shelf!"
+        activityQuote: "Abracadabra! Match three pumpkin treats before the witching hour!"
       }
     ],
     activities: [
@@ -157,10 +157,10 @@ export const GAMES_CATALOG: GameItem[] = [
     featured: true,
     characters: [
       {
-        name: "Jingle the Master Elf",
-        role: "Head Toy Craftsman",
-        portrait: "/images/character_mimo_cat.png",
-        personality: "Energetic, festive, wears a bell-tipped hat and loves peppermint cookies.",
+        name: "Noel the Toymaker Elf",
+        role: "Master Craftsman & Workshop Foreman",
+        portrait: "/images/characters/character_noel_elf.png",
+        personality: "Warm, jolly, master of wooden toy trains and peppermint treats.",
         signatureAbility: "Toy Box Surge (Spawns 5 mystery wrapped gift boxes)",
         activityQuote: "Only 12 days till Christmas Eve! Let's polish these wooden toy trains!"
       }

@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { GameItem } from '../data/gamesData';
-import { ArrowLeft, Play, Star, Smartphone, ShieldCheck, Sparkles, Trophy, Download } from 'lucide-react';
+import { Sparkles, Gamepad2, ArrowLeft, Star, Smartphone, Download, CheckCircle2, Trophy, Heart } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 interface GameDetailPageProps {
@@ -14,72 +14,87 @@ export const GameDetailPage: React.FC<GameDetailPageProps> = ({
   onBack,
   onOpenInstantPlay
 }) => {
-  const triggerConfetti = () => {
+  const [selectedCharacterIndex, setSelectedCharacterIndex] = useState(0);
+
+  const triggerCheer = () => {
     confetti({
-      particleCount: 50,
+      particleCount: 60,
       spread: 70,
-      origin: { y: 0.5 },
-      colors: ['#FF5E7E', '#FFD166', '#06D6A0', '#4FACFE']
+      origin: { y: 0.6 },
+      colors: ['#FF5E7E', '#FFD166', '#06D6A0', '#4FACFE', '#FFAA00']
     });
   };
 
+  const activeChar = game.characters && game.characters.length > 0
+    ? game.characters[selectedCharacterIndex] || game.characters[0]
+    : null;
+
   return (
-    <div className="min-h-screen bg-base-100 pb-24">
+    <div className="space-y-16 pb-24">
       
       {/* 1. FULLSCREEN IMMERSIVE HERO BANNER */}
-      <div className="relative h-[480px] sm:h-[580px] w-full overflow-hidden bg-base-300">
-        <img
-          src={game.coverImage}
-          alt={game.title}
-          className="w-full h-full object-cover filter blur-xs scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-base-100 via-base-100/60 to-black/40"></div>
+      <section className="relative overflow-hidden bg-base-900 text-white min-h-[500px] lg:min-h-[580px] flex items-end">
+        {/* Background Fullscreen Art */}
+        <div className="absolute inset-0">
+          <img
+            src={game.coverImage}
+            alt={game.title}
+            className="w-full h-full object-cover opacity-60 filter brightness-90"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-base-100 via-black/40 to-black/70"></div>
+        </div>
 
         {/* Top Back Navigation Bar */}
-        <div className="absolute top-6 left-4 sm:left-8 z-20">
+        <div className="absolute top-6 left-4 sm:left-8 z-30">
           <button
             onClick={onBack}
-            className="btn btn-sm sm:btn-md btn-circle bg-base-100/80 backdrop-blur-md shadow-lg border border-base-300 hover:scale-105"
-            title="Back to games"
+            className="btn btn-sm sm:btn-md btn-neutral rounded-full gap-2 bg-black/60 hover:bg-black/80 text-white backdrop-blur border border-white/20 shadow-lg"
           >
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="w-4 h-4" />
+            <span>Back to All Games</span>
           </button>
         </div>
 
-        {/* Hero Title & Store Badges Overlay */}
-        <div className="absolute bottom-8 left-4 sm:left-8 right-4 sm:right-8 max-w-7xl mx-auto z-20 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        {/* Hero Content Overlay */}
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full space-y-6">
           
-          <div className="space-y-3">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className={`badge ${game.badgeColor} badge-md font-extrabold shadow`}>
-                {game.badge}
-              </span>
-              <span className="badge badge-neutral badge-md font-bold bg-black/60 text-white backdrop-blur">
-                {game.releaseQuarter}
-              </span>
-              <span className="badge badge-ghost badge-md font-bold bg-base-100/80">
-                {game.engine}
-              </span>
-            </div>
+          <div className="flex flex-wrap items-center gap-3">
+            <span className={`badge ${game.badgeColor} badge-lg font-extrabold shadow-lg`}>
+              {game.badge}
+            </span>
+            <span className="badge badge-neutral badge-lg font-bold bg-black/70 text-white backdrop-blur border border-white/20">
+              {game.releaseQuarter}
+            </span>
+            <span className="badge badge-accent badge-lg font-bold">
+              {game.genre}
+            </span>
+          </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold font-['Fredoka'] text-base-content tracking-tight drop-shadow-sm">
+          <div className="space-y-3 max-w-4xl">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold font-['Fredoka'] text-white drop-shadow-lg leading-tight">
               {game.title}
             </h1>
-
-            <p className="text-base sm:text-lg text-base-content/80 font-['Nunito'] max-w-2xl font-medium">
+            <p className="text-base sm:text-xl text-slate-200 font-['Nunito'] font-medium leading-relaxed max-w-3xl drop-shadow">
               {game.description}
             </p>
           </div>
 
-          {/* Download & Play Actions */}
-          <div className="flex flex-wrap items-center gap-3 shrink-0">
-            {game.hasPlayableWeb && (
+          {/* Action CTAs: PLAY IN BROWSER + STORE DOWNLOADS */}
+          <div className="pt-2 flex flex-wrap items-center gap-4">
+            {game.hasPlayableWeb ? (
               <button
-                onClick={() => { triggerConfetti(); onOpenInstantPlay(game); }}
-                className="btn btn-primary rounded-full px-6 font-bold gap-2 shadow-xl shadow-primary/30 hover:scale-105 transition-transform"
+                onClick={() => { triggerCheer(); onOpenInstantPlay(game); }}
+                className="btn btn-lg btn-primary rounded-full px-8 font-extrabold shadow-2xl shadow-primary/40 gap-2 hover:scale-105 transition-transform"
               >
-                <Play className="w-4 h-4 fill-current" />
-                <span>Play in Browser</span>
+                <Gamepad2 className="w-6 h-6" />
+                <span>Play in Browser Now (Instant)</span>
+              </button>
+            ) : (
+              <button
+                disabled
+                className="btn btn-lg btn-disabled rounded-full px-8 font-bold text-white/60 bg-white/10"
+              >
+                <span>Mobile Release Only</span>
               </button>
             )}
 
@@ -88,9 +103,9 @@ export const GameDetailPage: React.FC<GameDetailPageProps> = ({
                 href={game.appStoreUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-neutral bg-black text-white hover:bg-neutral-800 rounded-full px-5 font-bold gap-2 shadow-md hover:scale-105 transition-transform"
+                className="btn btn-lg btn-neutral bg-black/80 text-white hover:bg-black rounded-full px-6 font-semibold gap-2 border border-white/20 backdrop-blur shadow-lg"
               >
-                <Smartphone className="w-4 h-4" />
+                <Smartphone className="w-5 h-5" />
                 <span>Apple App Store</span>
               </a>
             )}
@@ -100,184 +115,253 @@ export const GameDetailPage: React.FC<GameDetailPageProps> = ({
                 href={game.googlePlayUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-outline rounded-full px-5 font-bold gap-2 hover:scale-105 transition-transform bg-base-100/70"
+                className="btn btn-lg btn-outline rounded-full px-6 font-semibold gap-2 text-white border-white/40 hover:bg-white/10 backdrop-blur"
               >
-                <Download className="w-4 h-4" />
-                <span>Google Play</span>
+                <Download className="w-5 h-5" />
+                <span>Google Play Store</span>
               </a>
             )}
           </div>
 
+          {/* Quick Stats Bar */}
+          <div className="pt-4 flex flex-wrap items-center gap-6 text-sm font-semibold text-slate-200">
+            <div className="flex items-center gap-1.5 text-amber-300">
+              <Star className="w-4 h-4 fill-amber-300" />
+              <span className="font-extrabold text-white">{game.rating} / 5.0</span>
+              <span className="text-slate-300">({game.players})</span>
+            </div>
+            <div>&bull;</div>
+            <div>Engine: <span className="text-white font-bold">{game.engine}</span></div>
+            <div>&bull;</div>
+            <div>Platforms: <span className="text-white font-bold">{game.platforms.join(', ')}</span></div>
+          </div>
+
         </div>
-      </div>
 
-      {/* 2. GAME HIGHLIGHT STRIP */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-5 rounded-3xl bg-base-200/60 border border-base-300">
-          <div className="p-3">
-            <div className="text-xs text-base-content/60 font-bold uppercase">Store Rating</div>
-            <div className="text-xl font-extrabold text-amber-500 font-['Fredoka'] flex items-center gap-1 mt-0.5">
-              <Star className="w-4 h-4 fill-current" /> {game.rating} / 5.0
-            </div>
-          </div>
+      </section>
 
-          <div className="p-3">
-            <div className="text-xs text-base-content/60 font-bold uppercase">Community Reach</div>
-            <div className="text-xl font-extrabold text-success font-['Fredoka'] mt-0.5">
-              {game.players}
-            </div>
-          </div>
-
-          <div className="p-3">
-            <div className="text-xs text-base-content/60 font-bold uppercase">Target Platforms</div>
-            <div className="text-sm font-extrabold text-base-content mt-1 flex gap-1">
-              {game.platforms.join(', ')}
-            </div>
-          </div>
-
-          <div className="p-3">
-            <div className="text-xs text-base-content/60 font-bold uppercase">Compliance</div>
-            <div className="text-sm font-bold text-emerald-600 mt-1 flex items-center gap-1">
-              <ShieldCheck className="w-4 h-4" /> 100% COPPA Safe
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* 3. CHARACTER ROSTER & DESIGN SPOTLIGHT */}
+      {/* 2. CHARACTER DESIGN HERO SPOTLIGHT (LARGE PROMINENT ARTWORK) */}
       {game.characters && game.characters.length > 0 && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
-          <div className="mb-8">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/15 text-secondary font-bold text-xs uppercase tracking-wider mb-2">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Character Roster</span>
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/10 text-secondary font-bold text-xs uppercase tracking-wider mb-2">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Character Design Showcase</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-extrabold font-['Fredoka'] text-base-content">
+                Meet the Heroes & Companions
+              </h2>
+              <p className="text-sm sm:text-base text-base-content/70 font-['Nunito'] mt-1">
+                Original hand-crafted Disney-Pixar stylized protagonists, companions, and guides.
+              </p>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold font-['Fredoka'] text-base-content">
-              Meet the Heroes & Companions
-            </h2>
-            <p className="text-sm text-base-content/70 font-['Nunito'] mt-1">
-              Distinctive personality traits, signature abilities, and in-game dialogues.
-            </p>
+
+            {/* Character Selector Tabs */}
+            {game.characters.length > 1 && (
+              <div className="flex flex-wrap gap-2">
+                {game.characters.map((char, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => { setSelectedCharacterIndex(idx); triggerCheer(); }}
+                    className={`btn btn-sm rounded-full font-bold gap-2 ${
+                      selectedCharacterIndex === idx ? 'btn-primary shadow-md' : 'btn-ghost bg-base-200'
+                    }`}
+                  >
+                    <span>{char.name}</span>
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {game.characters.map((char, idx) => (
-              <div
-                key={idx}
-                className="p-6 rounded-3xl bg-base-100 border border-base-200 shadow-md hover:shadow-xl transition-all flex flex-col sm:flex-row items-center sm:items-start gap-6 group"
-              >
-                <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-gradient-to-tr from-pink-500/20 to-amber-300/20 p-2 shrink-0 border border-primary/20 group-hover:scale-105 transition-transform">
-                  <img
-                    src={char.portrait}
-                    alt={char.name}
-                    className="w-full h-full object-contain filter drop-shadow"
-                  />
+          {/* Large Hero Character Stage */}
+          {activeChar && (
+            <div className="rounded-3xl bg-gradient-to-br from-base-200/90 via-base-100 to-base-200/90 border border-base-300 shadow-xl overflow-hidden p-6 sm:p-10">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                {/* BIG Character Artwork Stage (Left 5 Columns) */}
+                <div className="lg:col-span-5 flex justify-center items-center relative">
+                  {/* Glowing Aura Ring */}
+                  <div className="absolute w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-primary/15 filter blur-3xl -z-10 animate-pulse"></div>
+                  
+                  <div className="relative h-72 sm:h-96 lg:h-[440px] w-full flex items-center justify-center">
+                    <img
+                      src={activeChar.portrait}
+                      alt={activeChar.name}
+                      className="max-h-full max-w-full object-contain filter drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
                 </div>
 
-                <div className="space-y-2 text-center sm:text-left flex-1">
-                  <div>
-                    <h3 className="text-xl font-bold font-['Fredoka'] text-base-content">
-                      {char.name}
+                {/* Character Lore & Details (Right 7 Columns) */}
+                <div className="lg:col-span-7 space-y-6">
+                  
+                  <div className="space-y-2">
+                    <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-primary/10 text-primary font-bold text-xs uppercase tracking-wider">
+                      <Trophy className="w-3.5 h-3.5" />
+                      <span>{activeChar.role}</span>
+                    </div>
+                    <h3 className="text-3xl sm:text-5xl font-extrabold font-['Fredoka'] text-base-content">
+                      {activeChar.name}
                     </h3>
-                    <div className="text-xs font-extrabold text-primary uppercase tracking-wide">
-                      {char.role}
+                  </div>
+
+                  {/* Character Quote Box */}
+                  <div className="p-4 sm:p-5 rounded-2xl bg-base-100 border border-base-300 shadow-sm relative">
+                    <span className="text-3xl text-primary/30 absolute top-2 left-3 font-serif">“</span>
+                    <p className="text-base sm:text-lg font-bold text-base-content/90 font-['Nunito'] italic pl-6">
+                      {activeChar.activityQuote}
+                    </p>
+                  </div>
+
+                  {/* Character Traits & Signature Ability */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="p-4 rounded-2xl bg-base-100 border border-base-200">
+                      <div className="flex items-center gap-2 text-xs font-extrabold text-secondary uppercase tracking-wider mb-1">
+                        <Heart className="w-4 h-4" />
+                        <span>Personality & Identity</span>
+                      </div>
+                      <p className="text-sm text-base-content/80 font-['Nunito']">
+                        {activeChar.personality}
+                      </p>
+                    </div>
+
+                    <div className="p-4 rounded-2xl bg-base-100 border border-base-200">
+                      <div className="flex items-center gap-2 text-xs font-extrabold text-accent uppercase tracking-wider mb-1">
+                        <Sparkles className="w-4 h-4" />
+                        <span>Signature In-Game Ability</span>
+                      </div>
+                      <p className="text-sm font-bold text-primary font-['Nunito']">
+                        {activeChar.signatureAbility}
+                      </p>
                     </div>
                   </div>
 
-                  <p className="text-xs text-base-content/70 font-['Nunito'] leading-relaxed">
-                    {char.personality}
-                  </p>
+                  {/* Multi-Character Navigation Pills */}
+                  {game.characters.length > 1 && (
+                    <div className="pt-2 border-t border-base-200 flex items-center gap-3">
+                      <span className="text-xs font-bold text-base-content/60">Switch Character:</span>
+                      <div className="flex gap-2">
+                        {game.characters.map((c, i) => (
+                          <button
+                            key={i}
+                            onClick={() => setSelectedCharacterIndex(i)}
+                            className={`btn btn-xs rounded-full font-bold ${
+                              selectedCharacterIndex === i ? 'btn-primary' : 'btn-ghost bg-base-200'
+                            }`}
+                          >
+                            {c.name}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
-                  <div className="p-2.5 rounded-xl bg-base-200/80 border border-base-300 text-xs font-semibold text-secondary">
-                    ⚡ <strong>Signature Ability:</strong> {char.signatureAbility}
-                  </div>
-
-                  <div className="text-xs italic text-base-content/60 font-['Nunito'] pt-1">
-                    "{char.activityQuote}"
-                  </div>
                 </div>
+
               </div>
-            ))}
-          </div>
+            </div>
+          )}
+
         </section>
       )}
 
-      {/* 4. IN-GAME ACTIVITIES & SCREENSHOT GALLERY */}
+      {/* 3. LIVELY IN-GAME ACTIVITY CAPTURES */}
       {game.activities && game.activities.length > 0 && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
-          <div className="mb-8">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary font-bold text-xs uppercase tracking-wider mb-2">
-              <Trophy className="w-3.5 h-3.5" />
-              <span>In-Game Gameplay</span>
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          
+          <div>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent/10 text-accent font-bold text-xs uppercase tracking-wider mb-2">
+              <Gamepad2 className="w-3.5 h-3.5" />
+              <span>Core Gameplay Experience</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold font-['Fredoka'] text-base-content">
-              Lively In-Game Activities & World Exploration
+              In-Game Activities & Adventures
             </h2>
+            <p className="text-sm sm:text-base text-base-content/70 font-['Nunito'] mt-1">
+              Explore what characters do inside the game world.
+            </p>
           </div>
 
-          <div className="space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {game.activities.map((act, idx) => (
               <div
                 key={idx}
-                className="card bg-base-100 border border-base-200 shadow-xl rounded-3xl overflow-hidden"
+                className="rounded-3xl bg-base-100 border border-base-200 shadow-md hover:shadow-xl transition-shadow overflow-hidden group"
               >
-                <div className="relative aspect-video w-full overflow-hidden bg-base-300">
+                <div className="relative h-64 sm:h-72 overflow-hidden bg-base-200">
                   <img
                     src={act.image}
                     alt={act.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                  <div className="absolute bottom-6 left-6 right-6 text-white">
-                    <h3 className="text-2xl sm:text-3xl font-extrabold font-['Fredoka'] drop-shadow-md">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                  <div className="absolute bottom-4 left-5 right-5 text-white">
+                    <h4 className="text-xl font-bold font-['Fredoka'] drop-shadow">
                       {act.title}
-                    </h3>
-                    <p className="text-sm sm:text-base text-slate-200 font-['Nunito'] max-w-2xl mt-1 drop-shadow">
-                      {act.description}
-                    </p>
+                    </h4>
                   </div>
+                </div>
+
+                <div className="p-6">
+                  <p className="text-sm sm:text-base text-base-content/80 font-['Nunito'] leading-relaxed">
+                    {act.description}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
+
         </section>
       )}
 
-      {/* 5. TECH SPECS & USP BOX */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
-        <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-base-200/80 to-base-300/60 border border-base-300 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="space-y-3 max-w-2xl">
-            <h3 className="text-2xl font-bold font-['Fredoka'] text-base-content">
-              Engine & Technical Architecture
-            </h3>
-            <p className="text-sm text-base-content/80 font-['Nunito'] leading-relaxed">
-              Built on <strong>{game.engine}</strong> with low-memory mobile footprint, 60 FPS silky smooth animations, and high-conversion tactile feedback.
-            </p>
-            <div className="flex flex-wrap gap-2 pt-2">
-              {game.tags.map((t, i) => (
-                <span key={i} className="badge badge-outline font-bold text-xs">
-                  #{t}
-                </span>
-              ))}
+      {/* 4. GAME DESIGN USP & KEY SPECIFICATIONS */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="p-8 sm:p-10 rounded-3xl bg-base-200/70 border border-base-300 space-y-6">
+          <h3 className="text-2xl font-extrabold font-['Fredoka'] text-base-content">
+            Game Features & Architecture Highlights
+          </h3>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-4 rounded-2xl bg-base-100 border border-base-200 space-y-1.5">
+              <div className="flex items-center gap-2 text-sm font-bold text-primary">
+                <CheckCircle2 className="w-4 h-4" />
+                <span>Unique Selling Point</span>
+              </div>
+              <p className="text-xs sm:text-sm text-base-content/75 font-['Nunito']">
+                {game.usp}
+              </p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-base-100 border border-base-200 space-y-1.5">
+              <div className="flex items-center gap-2 text-sm font-bold text-secondary">
+                <CheckCircle2 className="w-4 h-4" />
+                <span>Audio & Visual Style</span>
+              </div>
+              <p className="text-xs sm:text-sm text-base-content/75 font-['Nunito']">
+                Disney-Pixar semi-3D glossy hand-painted digital art with crisp ASMR haptic audio feedback.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-base-100 border border-base-200 space-y-1.5">
+              <div className="flex items-center gap-2 text-sm font-bold text-accent">
+                <CheckCircle2 className="w-4 h-4" />
+                <span>Fair Monetization & Safety</span>
+              </div>
+              <p className="text-xs sm:text-sm text-base-content/75 font-['Nunito']">
+                100% COPPA family-safe, optional rewarded ads with zero paywalls.
+              </p>
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 shrink-0">
-            <button
-              onClick={onBack}
-              className="btn btn-outline rounded-full px-6 font-bold"
-            >
-              Back to Catalog
-            </button>
-            {game.hasPlayableWeb && (
-              <button
-                onClick={() => onOpenInstantPlay(game)}
-                className="btn btn-primary rounded-full px-6 font-bold gap-2 shadow"
-              >
-                <Play className="w-4 h-4 fill-current" />
-                <span>Launch Web Demo</span>
-              </button>
-            )}
+          <div className="pt-4 flex flex-wrap gap-2">
+            {game.tags.map((tag, idx) => (
+              <span key={idx} className="badge badge-primary badge-outline badge-md font-bold">
+                #{tag}
+              </span>
+            ))}
           </div>
         </div>
       </section>

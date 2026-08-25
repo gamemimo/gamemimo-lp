@@ -16,13 +16,13 @@ export function App() {
   const [currentPage, setCurrentPage] = useState<ExtendedPageId>('home');
   const [previousPage, setPreviousPage] = useState<PageId>('home');
   const [selectedGameForDetail, setSelectedGameForDetail] = useState<GameItem | null>(null);
-  const [currentTheme, setCurrentTheme] = useState('pastel');
   const [selectedGameForPlay, setSelectedGameForPlay] = useState<GameItem | null>(null);
   const [playModalOpen, setPlayModalOpen] = useState(false);
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', currentTheme);
-  }, [currentTheme]);
+    // Locked to cheerful, sunny, clean light theme
+    document.documentElement.setAttribute('data-theme', 'cupcake');
+  }, []);
 
   // Sync hash routing if present
   useEffect(() => {
@@ -80,8 +80,6 @@ export function App() {
       <Navbar
         currentPage={currentPage === 'game-detail' ? 'games' : (currentPage as PageId)}
         setCurrentPage={handlePageChange}
-        currentTheme={currentTheme}
-        setTheme={setCurrentTheme}
         onOpenInstantPlay={handleOpenDefaultInstantPlay}
       />
 

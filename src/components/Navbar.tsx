@@ -7,16 +7,12 @@ export type PageId = 'home' | 'games' | 'events' | 'about' | 'contact';
 interface NavbarProps {
   currentPage: PageId;
   setCurrentPage: (page: PageId) => void;
-  currentTheme: string;
-  setTheme: (theme: string) => void;
   onOpenInstantPlay: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   currentPage,
   setCurrentPage,
-  currentTheme,
-  setTheme,
   onOpenInstantPlay,
 }) => {
   const [soundEnabled, setSoundEnabled] = useState(true);
@@ -37,15 +33,6 @@ export const Navbar: React.FC<NavbarProps> = ({
     { id: 'events', label: 'Holiday Events' },
     { id: 'about', label: 'About Us' },
     { id: 'contact', label: 'Contact' },
-  ];
-
-  const themes = [
-    { id: 'pastel', label: '🌸 Pastel' },
-    { id: 'cupcake', label: '🧁 Cupcake' },
-    { id: 'valentine', label: '💖 Valentine' },
-    { id: 'emerald', label: '🌿 Emerald' },
-    { id: 'sunset', label: '🌅 Sunset' },
-    { id: 'cyberpunk', label: '⚡ Cyber' },
   ];
 
   const handleNavClick = (page: PageId) => {
@@ -94,28 +81,8 @@ export const Navbar: React.FC<NavbarProps> = ({
           ))}
         </nav>
 
-        {/* Controls: Theme, Sound, Play Web */}
+        {/* Controls: Sound & Play Web */}
         <div className="hidden sm:flex items-center gap-3">
-          
-          {/* Theme Dropdown */}
-          <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="btn btn-sm btn-ghost gap-1 font-medium capitalize rounded-full">
-              🎨 <span className="hidden lg:inline">{currentTheme}</span>
-            </label>
-            <ul tabIndex={0} className="dropdown-content menu p-2 shadow-xl bg-base-100 rounded-2xl w-36 text-sm border border-base-200 mt-2 z-50">
-              {themes.map(t => (
-                <li key={t.id}>
-                  <button 
-                    onClick={() => setTheme(t.id)} 
-                    className={`py-1.5 rounded-xl ${currentTheme === t.id ? 'active font-bold' : ''}`}
-                  >
-                    {t.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           {/* Sound FX Toggle */}
           <button 
             onClick={() => setSoundEnabled(!soundEnabled)} 
@@ -128,7 +95,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Play Web CTA Button */}
           <button 
             onClick={() => { triggerSparkles(); onOpenInstantPlay(); }}
-            className="btn btn-sm btn-primary rounded-full px-4 gap-1.5 font-bold shadow-md shadow-primary/25 hover:scale-105 transition-transform"
+            className="btn btn-sm btn-primary rounded-full px-5 gap-1.5 font-bold shadow-md shadow-primary/25 hover:scale-105 transition-transform"
           >
             <Gamepad2 className="w-4 h-4" />
             <span>Play Web Instant</span>
@@ -163,17 +130,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               </button>
             ))}
           </nav>
-          
-          <div className="pt-3 border-t border-base-200 flex items-center justify-between">
-            <span className="text-xs font-bold text-base-content/70">Theme:</span>
-            <div className="flex flex-wrap gap-1">
-              {themes.slice(0, 4).map(t => (
-                <button key={t.id} onClick={() => setTheme(t.id)} className="btn btn-xs btn-outline rounded-lg">
-                  {t.label.split(' ')[0]}
-                </button>
-              ))}
-            </div>
-          </div>
 
           <button 
             onClick={() => { setMobileMenuOpen(false); onOpenInstantPlay(); }}
