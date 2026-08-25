@@ -15,6 +15,7 @@ export const HomePage: React.FC<HomePageProps> = ({
   onOpenInstantPlay
 }) => {
   const [scrollY, setScrollY] = useState(0);
+  const [isTeenDracoFlying, setIsTeenDracoFlying] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +24,16 @@ export const HomePage: React.FC<HomePageProps> = ({
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const triggerDracoFlight = () => {
+    setIsTeenDracoFlying(prev => !prev);
+    confetti({
+      particleCount: 90,
+      spread: 100,
+      origin: { y: 0.5, x: 0.3 },
+      colors: ['#00F5D4', '#7B2CBF', '#FF007F', '#FFBE0B', '#3A86FF']
+    });
+  };
 
   const triggerConfetti = () => {
     confetti({
@@ -39,7 +50,7 @@ export const HomePage: React.FC<HomePageProps> = ({
   return (
     <div className="space-y-24 pb-20 overflow-x-hidden">
       
-      {/* 1. CINEMATIC LARGE-SCALE 3D SCROLL PARALLAX HERO (RESPONSIVE FOR 1080P, 1440P & 4K) */}
+      {/* 1. CINEMATIC LARGE-SCALE 3D SCROLL PARALLAX HERO (1080P, 1440P & 4K READY) */}
       <section className="relative overflow-hidden pt-16 pb-28 lg:pt-24 lg:pb-44 bg-gradient-to-b from-base-100 via-base-200/50 to-base-100 min-h-[90vh] xl:min-h-[100vh] flex items-center justify-center">
         
         {/* Layer 0: Distant Sky Castle & Floating Islands (0.12x slow drift) */}
@@ -53,6 +64,29 @@ export const HomePage: React.FC<HomePageProps> = ({
             className="w-full h-full object-cover opacity-25 dark:opacity-15 filter blur-[1px]"
           />
         </div>
+
+        {/* Layer 0.5: Dynamic Flying Teen Draco (Flies behind hero text across the screen!) */}
+        {isTeenDracoFlying && (
+          <div
+            className="absolute z-10 pointer-events-none transition-all duration-300 ease-out"
+            style={{
+              left: `${15 + Math.sin(scrollY * 0.005) * 40}%`,
+              top: `${12 + (scrollY * 0.35) % 65}%`,
+              transform: `translate(-50%, -50%) scale(${1.2 + Math.cos(scrollY * 0.006) * 0.3}) rotate(${Math.sin(scrollY * 0.008) * 20}deg)`
+            }}
+          >
+            <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[460px] lg:h-[460px] filter drop-shadow-2xl">
+              <img
+                src="/images/character_teen_draco_flying.png"
+                alt="Flying Teen Draco"
+                className="w-full h-full object-contain animate-float-slow"
+              />
+              <div className="absolute top-4 right-8 badge badge-accent badge-md font-extrabold shadow-lg animate-pulse">
+                ✨ Soaring Draco!
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Layer 1: Foreground Big Toy Biplane (Dynamic zoom, fast flyby & depth blur) */}
         <div
@@ -89,23 +123,23 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
         </div>
 
-        {/* Layer 3: Foreground Left — Big Baby Draco on Wooden Railing */}
+        {/* Layer 3: Foreground Left — Baby Draco (Click toggles Soaring Teen Draco flight!) */}
         <div
           className="absolute top-10 left-[-2%] sm:left-[2%] lg:left-[6%] xl:left-[10%] z-20 transition-transform duration-100 ease-out"
           style={{ transform: `translateY(${scrollY * 0.2}px)` }}
         >
           <div
-            className="w-60 h-60 sm:w-80 sm:h-80 lg:w-[400px] lg:h-[400px] xl:w-[480px] xl:h-[480px] p-2 cursor-pointer pointer-events-auto hover:scale-108 active:scale-95 transition-transform animate-float-slow"
-            onClick={triggerConfetti}
-            title="Baby Draco — Click for magic sparkles!"
+            className="w-60 h-60 sm:w-80 sm:h-80 lg:w-[400px] lg:h-[400px] xl:w-[480px] xl:h-[480px] p-2 cursor-pointer pointer-events-auto hover:scale-108 active:scale-95 transition-transform animate-float-slow group"
+            onClick={triggerDracoFlight}
+            title="Click to unleash Flying Teen Draco!"
           >
             <img
-              src="/images/character_baby_dragon.png"
-              alt="Baby Dragon"
-              className="w-full h-full object-contain filter drop-shadow-2xl"
+              src={isTeenDracoFlying ? "/images/character_teen_draco_flying.png" : "/images/character_baby_dragon.png"}
+              alt="Draco"
+              className="w-full h-full object-contain filter drop-shadow-2xl transition-all duration-500"
             />
             <div className="absolute bottom-6 right-6 badge badge-primary badge-sm sm:badge-md lg:badge-lg font-extrabold shadow-xl animate-bounce">
-              Baby Draco 🐲
+              {isTeenDracoFlying ? "🐲 Soaring! (Click to Rest)" : "🐲 Baby Draco (Click to Fly!)"}
             </div>
           </div>
         </div>
@@ -131,19 +165,38 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
         </div>
 
-        {/* Layer 5: Giant Magic Crystal Gem Floating in Space */}
+        {/* Layer 5: Floating Magic Crystal Diamonds & Ruby Gems */}
+        {/* Gem 1: Cyan Diamond Left */}
         <div
-          className="absolute bottom-28 left-[12%] sm:left-[18%] lg:left-[22%] z-20 hidden sm:block transition-transform duration-100 ease-out"
+          className="absolute bottom-28 left-[10%] sm:left-[16%] lg:left-[20%] z-20 hidden sm:block transition-transform duration-100 ease-out"
           style={{ transform: `translateY(${-scrollY * 0.38}px) rotate(${scrollY * 0.08}deg)` }}
         >
           <div
-            className="w-28 h-28 sm:w-40 sm:h-40 lg:w-[220px] lg:h-[220px] cursor-pointer pointer-events-auto hover:scale-115 transition-transform animate-float-slow"
+            className="w-24 h-24 sm:w-36 sm:h-36 lg:w-[190px] lg:h-[190px] cursor-pointer pointer-events-auto hover:scale-115 transition-transform animate-float-slow"
             onClick={triggerConfetti}
-            title="Luminous Magic Crystal"
+            title="Luminous Cyan Crystal"
           >
             <img
               src="/images/item_magic_gem.png"
-              alt="Magic Gem"
+              alt="Cyan Gem"
+              className="w-full h-full object-contain filter drop-shadow-2xl"
+            />
+          </div>
+        </div>
+
+        {/* Gem 2: Fiery Ruby Gem Right */}
+        <div
+          className="absolute top-24 right-[16%] sm:right-[22%] lg:right-[26%] z-15 hidden md:block transition-transform duration-100 ease-out"
+          style={{ transform: `translateY(${scrollY * 0.28}px) rotate(${-scrollY * 0.06}deg)` }}
+        >
+          <div
+            className="w-20 h-20 sm:w-32 sm:h-32 lg:w-[170px] lg:h-[170px] cursor-pointer pointer-events-auto hover:scale-115 transition-transform animate-float-reverse"
+            onClick={triggerConfetti}
+            title="Glowing Fiery Ruby Gem"
+          >
+            <img
+              src="/images/item_ruby_gem.png"
+              alt="Ruby Gem"
               className="w-full h-full object-contain filter drop-shadow-2xl"
             />
           </div>

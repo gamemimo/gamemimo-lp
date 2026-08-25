@@ -197,7 +197,7 @@ export const GAMES_CATALOG: GameItem[] = [
     featured: true,
     characters: [
       {
-        name: "Mie Sato (Authentic Character Asset)",
+        name: "Mie Sato",
         role: "Lead Fashion Protagonist & Stylist",
         portrait: "/images/characters/character_mie_sato.png",
         personality: "Creative, chic, trendsetting, loves elegant coats and pastel berets.",
@@ -207,8 +207,8 @@ export const GAMES_CATALOG: GameItem[] = [
       {
         name: "Yuna Kim",
         role: "Rival Designer & Runway Critic",
-        portrait: "/images/character_baby_dragon.png",
-        personality: "Perfectionist, sharp eye for color harmony and luxury accessories.",
+        portrait: "/images/characters/character_yuna_kim.png",
+        personality: "Perfectionist Korean designer with a sharp eye for color harmony, lilac tailoring, and luxury clutches.",
         signatureAbility: "Critique Boost (+15% VIP client tip bonus)",
         activityQuote: "Chic lines and impeccable tailoring—that's how you win the winter grand prix."
       }
@@ -245,7 +245,7 @@ export const GAMES_CATALOG: GameItem[] = [
     featured: true,
     characters: [
       {
-        name: "Kael Voss (Authentic Hero Asset)",
+        name: "Kael Voss",
         role: "Precision Vanguard (Railburst Carbine)",
         portrait: "/images/characters/character_kael_voss.png",
         personality: "Route-obsessed pathfinder with dry humor and rock-solid discipline under swarm pressure.",
@@ -253,7 +253,7 @@ export const GAMES_CATALOG: GameItem[] = [
         activityQuote: "Keep moving through the Neon Causeway. I'll cover the rear lane!"
       },
       {
-        name: "Nyra Sol (Authentic Hero Asset)",
+        name: "Nyra Sol",
         role: "Aggressive Swarm Breaker (Helix SMG & Vials)",
         portrait: "/images/characters/character_nyra_sol.png",
         personality: "Charismatic, protective former street medic armed with stolen hybrid alien biotech.",
@@ -458,7 +458,7 @@ export const GAMES_CATALOG: GameItem[] = [
     featured: false,
     characters: [
       {
-        name: "Chef Leo (Human)",
+        name: "Chef Leo",
         role: "Executive Master Chef & Patissier",
         portrait: "/images/character_mimo_cat.png",
         personality: "Enthusiastic French-Italian culinary prodigy with a curly mustache, tall white toque, and red neckerchief.",
@@ -466,7 +466,7 @@ export const GAMES_CATALOG: GameItem[] = [
         activityQuote: "Bon Appétit! Three gourmet burgers and hot ramen on the pass!"
       },
       {
-        name: "Basil the Kitten (Pet)",
+        name: "Basil the Kitten",
         role: "Sous-Chef & Ingredient Inspector",
         portrait: "/images/character_baby_dragon.png",
         personality: "Curious white calico kitten wearing a mini chef bandana who rings the service bell.",
@@ -505,7 +505,7 @@ export const GAMES_CATALOG: GameItem[] = [
     featured: false,
     characters: [
       {
-        name: "Emma the Inventor (Human)",
+        name: "Emma the Inventor",
         role: "Master Engineer & Animal Rescuer",
         portrait: "/images/character_baby_dragon.png",
         personality: "Clever, energetic teenage mechanic in denim overalls, toolbelt, and yellow safety goggles on her forehead.",
@@ -513,7 +513,7 @@ export const GAMES_CATALOG: GameItem[] = [
         activityQuote: "Hold on little buddy! Check the gravity angle and unscrew the blue bolt first!"
       },
       {
-        name: "Milo the Golden Pup (Pet)",
+        name: "Milo the Golden Pup",
         role: "Rescue Sanctuary Mascot",
         portrait: "/images/character_mimo_cat.png",
         personality: "Fluffy, wide-eyed golden retriever puppy who gives joyful tail wags when freed from puzzle cages.",
@@ -552,7 +552,7 @@ export const GAMES_CATALOG: GameItem[] = [
     featured: false,
     characters: [
       {
-        name: "Mayor Penelope (Human)",
+        name: "Mayor Penelope",
         role: "Metropolis Chief Architect & Mayor",
         portrait: "/images/character_mimo_cat.png",
         personality: "Visionary young city planner in a pastel teal blazer, carrying architectural blueprints and tablet.",
@@ -560,7 +560,7 @@ export const GAMES_CATALOG: GameItem[] = [
         activityQuote: "The coastal express is running smoothly! Time to break ground on the seaside theme park!"
       },
       {
-        name: "Sparky the Corgi (Pet)",
+        name: "Sparky the Corgi",
         role: "Construction Inspector Mascot",
         portrait: "/images/character_baby_dragon.png",
         personality: "Energetic corgi wearing an official mini yellow safety hardhat and high-visibility orange vest.",
